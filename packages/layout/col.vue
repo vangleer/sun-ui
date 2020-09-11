@@ -1,14 +1,14 @@
 <template>
-  <div class="app">
-
-  </div>
+  <div>Col</div>
 </template>
+
 <script>
   export default {
-
+    name: 'SunCol'
   }
 
 </script>
-<style>
+
+<style lang="less" scoped>
 
 </style>

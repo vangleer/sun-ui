@@ -1,0 +1,133 @@
+<template>
+  <div class="sun-cell" :class="{ 'sun-cell-border': border }" @click="handleCellClick">
+    <div v-if="title&&!$slots.title" :class="[titleClass]" :style="titleStyle" class="sun-cell-title">
+      <span>
+        <i v-if="icon&&$slots.icon" :class="['sun-icon','sun-icon-'+icon]"></i>
+        <div v-else>
+          <slot name="icon"></slot>
+        </div>
+        {{ title }}
+      </span>
+      <p v-if="label" class="sun-cell-label" :class="[labelClass]">{{label}}</p>
+    </div>
+    <div v-else :class="[titleClass]" :style="titleStyle" class="sun-cell-title">
+      <slot name="title"></slot>
+    </div>
+
+    <div v-if="(value||isLink)&&!$slots.default" :style="{textAlign:title?'right':'left'}" class="sun-cell-value"
+      :class="[valueClass]">
+      <span>{{ value }}</span>
+      <i v-if="isLink" :class="['sun-icon', 'sun-icon-'+arrowDirection]"></i>
+    </div>
+    <div v-else :style="{textAlign:value?'right':'left'}" class="sun-cell-value" :class="[valueClass]">
+      <slot></slot>
+      <i v-if="isLink" :class="['sun-icon', 'sun-icon-'+arrowDirection]"></i>
+    </div>
+  </div>
+</template>
+
+<script>
+  export default {
+    name: "SunCell",
+    props: { // 标题
+      title: {
+        type: String | Number,
+        default: ""
+      },
+      value: { // 内容
+        type: String | Number,
+        default: ""
+      },
+      border: { // 是否要边框
+        type: Boolean,
+        default: true
+      },
+      label: { // 标签
+        type: String,
+        default: ''
+      },
+      icon: { // 图标
+        type: String,
+        default: ''
+      },
+      isLink: { // 是否显示右侧箭头
+        type: Boolean,
+        default: false
+      },
+      arrowDirection: { // 箭头方向
+        type: String,
+        default: 'right'
+      },
+      titleStyle: {
+        default: ''
+      },
+      titleClass: {
+        default: ''
+      },
+      valueClass: {
+        default: ''
+      },
+      labelClass: {
+        default: ''
+      }
+    },
+    methods: {
+      handleCellClick() {
+        this.$emit('click')
+      }
+    }
+  };
+
+</script>
+
+<style lang="less" scoped>
+  @import "../style/var.less";
+
+  .sun-cell {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px 16px;
+    // background-color: pink;
+    box-sizing: border-box;
+    color: #323233;
+  }
+
+  .sun-cell-title {
+    width: 50%;
+  }
+
+  .sun-cell-value {
+    text-align: right;
+    width: 50%;
+  }
+
+  .sun-cell-border::after {
+    position: absolute;
+    box-sizing: border-box;
+    content: " ";
+    pointer-events: none;
+    right: 16px;
+    bottom: 0;
+    left: 16px;
+    border-bottom: 1px solid #ebedf0;
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+  }
+
+  .sun-cell-label {
+    margin: 0;
+    font-size: 13px;
+    color: @gray-7;
+    margin-top: 6px;
+  }
+
+  .sun-cell-title {
+    .sun-icon {
+      margin-right: 4px;
+    }
+  }
+
+</style>

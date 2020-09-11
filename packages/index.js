@@ -1,9 +1,18 @@
 // 整个包的入口
 // 定义一个 install方法，接收 Vue作为参数，如果使用 use 注册插件，则所有的组件都将被注册
-import Button from './Button.vue'
+import Button from './button/Button.vue'
+import Icon from './icon/icon.vue'
+import Cell from './cell/cell.vue'
+import Row from './layout/row.vue'
+import Col from './layout/col.vue'
 
+import './assets/fonts/iconfont.css';
 const components = [
-  Button
+  Button,
+  Icon,
+  Cell,
+  Row,
+  Col
 ]
 const install = function (Vue) {
   // 注册所有组件
