@@ -5,6 +5,7 @@ import Icon from './icon/icon.vue'
 import Cell from './cell/cell.vue'
 import Row from './layout/row.vue'
 import Col from './layout/col.vue'
+import Popup from './popup/popup.vue'
 
 import './assets/fonts/iconfont.css';
 const components = [
@@ -12,7 +13,8 @@ const components = [
   Icon,
   Cell,
   Row,
-  Col
+  Col,
+  Popup
 ]
 const install = function (Vue) {
   // 注册所有组件
