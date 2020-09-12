@@ -1,14 +1,14 @@
 <template>
-  <div class="app">
-
-  </div>
+  <div>Row</div>
 </template>
+
 <script>
   export default {
-
+    name: 'SunRow'
   }
 
 </script>
-<style>
+
+<style lang="less" scoped>
 
 </style>

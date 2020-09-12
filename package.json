@@ -39,14 +39,10 @@
       "node": true,
       "es6": true
     },
-    "parser": "vue-eslint-parser",
     "extends": [
       "plugin:vue/essential",
       "@vue/standard"
     ],
-    "parserOptions": {
-      "parser": "babel-eslint"
-    },
     "rules": {
       "no-console": 0,
       "no-trailing-spaces": 0,
