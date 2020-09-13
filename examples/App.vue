@@ -1,6 +1,6 @@
 <template>
   <div class="app"></div>
-</template>
+</template> 
 
 <script>
 export default {}
