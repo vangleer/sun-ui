@@ -1,7 +1,7 @@
 <template>
-  <div class="sun-col" :class="{['sun-col-'+span]:!!span,['sun-col-offset-'+offset]:!!offset}">
+  <component :is="tag" class="sun-col" :class="{['sun-col-'+span]:!!span,['sun-col-offset-'+offset]:!!offset}">
     <slot></slot>
-  </div>
+  </component>
 </template>
 
 <script>
@@ -15,6 +15,10 @@
       offset: {
         type: Number | String,
         default: ''
+      },
+      tag: {
+        type: String,
+        default: 'div'
       }
     }
   }

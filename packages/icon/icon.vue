@@ -1,10 +1,10 @@
 <template>
-  <i @click="handleIconClick" class="sun-icon" :class="{['sun-icon-'+name]:!isUrl}"
+  <component :is="tag" @click="handleIconClick" class="sun-icon" :class="{['sun-icon-'+name]:!isUrl}"
     :style="{color:color,fontSize:fontSize}">
     <span v-if="dot" class="sun-icon-dot" :style="{backgroundColor: dotColor}"></span>
     <span v-if="badge" class="sun-icon-badge">{{badge}}</span>
     <img class="sun-icon-img" :style="{width:fontSize,height:fontSize}" v-if="isUrl" :src="name" alt="">
-  </i>
+  </component>
 </template>
 
 <script>
@@ -14,6 +14,10 @@
       name: { // 图标名称
         type: String,
         default: ''
+      },
+      tag: {
+        type: String,
+        default: 'i'
       },
       color: { // 颜色
         type: String,

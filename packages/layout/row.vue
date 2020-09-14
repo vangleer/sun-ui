@@ -1,7 +1,9 @@
 <template>
-  <div class="sun-row" ref="rows">
+  <component :is="tag" class="sun-row"
+    :class="[type?'sun-row-'+type:'',justify?'sun-row-flex-justify-'+justify:'',align?'sun-row-flex-align-'+align:'']"
+    ref="rows">
     <slot></slot>
-  </div>
+  </component>
 </template>
 
 <script>
@@ -11,6 +13,20 @@
       gutter: {
         type: String | Number,
         default: 0
+      },
+      type: {
+        type: String,
+        default: ''
+      },
+      justify: {
+        type: String
+      },
+      align: {
+        type: String
+      },
+      tag: {
+        type: String,
+        default: 'div'
       }
     },
     data() {
@@ -20,14 +36,19 @@
     },
     mounted() {
       if (!!this.gutter) {
+        this.handleCalGutter()
+      }
+    },
+    methods: {
+      // 计算 gutter
+      handleCalGutter() {
         let rowList = this.$refs.rows.children
         if (rowList.length !== 0) {
-          this.calGutter = parseInt(this.gutter) / 2
-          rowList[0].style.paddingRight = this.calGutter + 'px'
-          rowList[rowList.length - 1].style.paddingLeft = this.calGutter + 'px'
-          for (let i = 1; i < rowList.length - 1; i++) {
-            rowList[i].style.padding = `0 ${this.calGutter}px`
+          this.calGutter = parseInt(this.gutter)
+          for (let i = 0; i < rowList.length - 1; i++) {
+            rowList[i].style.marginRight = `${this.calGutter}px`
           }
+          rowList[rowList.length].style.marginRight = this.calGutter + 'px'
         }
       }
     }
@@ -48,6 +69,34 @@
     display: none;
     height: 0;
     clear: both;
+  }
+
+  .sun-row-flex {
+    display: flex;
+  }
+
+  .sun-row-flex-justify-end {
+    justify-content: flex-end;
+  }
+
+  .sun-row-flex-justify-center {
+    justify-content: center;
+  }
+
+  .sun-row-flex-justify-space-around {
+    justify-content: space-around;
+  }
+
+  .sun-row-flex-justify-space-between {
+    justify-content: space-between;
+  }
+
+  .sun-row-flex-align-center {
+    align-items: center;
+  }
+
+  .sun-row-flex-align-end {
+    align-items: flex-end;
   }
 
 </style>

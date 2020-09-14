@@ -1,6 +1,6 @@
 <template>
   <!-- ,{'is-extra':isExtraMode} -->
-  <button @touchstart="handleTouch" @click="handleBtnClick" class="sun-btn" :class="[
+  <component :is="tag" @touchstart="handleTouch" @click="handleBtnClick" class="sun-btn" :class="[
             color ? '' : 'sun-btn-' + type,
             {
               'is-extra': isExtraMode && size !== 'large',
@@ -18,7 +18,7 @@
     <span class="sun-btn-text" v-if="text">
       {{ text }}
     </span>
-  </button>
+  </component>
 </template>
 
 <script>
@@ -28,6 +28,10 @@
       type: {
         type: String,
         default: "default"
+      },
+      tag: {
+        type: String,
+        default: 'button'
       },
       isExtra: {
         type: Boolean,
