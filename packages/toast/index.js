@@ -11,6 +11,8 @@ let instance
 
 // 创建一个Toast函数
 const Toast = function (options = {}) {
+  let toasts = Array.from(document.querySelectorAll('.sun-toast'))
+  toasts.forEach(item => document.body.removeChild(item))
   if (typeof options === 'string') {
     options = {
       message: options
@@ -26,9 +28,9 @@ const Toast = function (options = {}) {
   // 挂载到body中
   document.body.appendChild(instance.$el)
 
-  setTimeout(() => {
-    document.body.removeChild(instance.$el)
-  }, instance.duration * 1.5)
+  // setTimeout(() => {
+
+  // }, instance.duration * 1.5)
 
 }
 let methods = ['success', 'fail', 'clear', 'loading']

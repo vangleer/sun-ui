@@ -1,5 +1,6 @@
-.sun-overlay {
-  position: absolute;
+.sun-overlay::before {
+  content: '';
+  position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
