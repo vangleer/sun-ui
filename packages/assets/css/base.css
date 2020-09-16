@@ -1,3 +1,15 @@
+div,
+span,
+a,
+p,
+i,
+img,
+button,
+input,
+textarea {
+  -webkit-tap-highlight-color: transparent;
+}
+
 .sun-overlay::before {
   content: '';
   position: fixed;
