@@ -9,6 +9,7 @@ import Popup from './popup/popup.vue'
 import Swipe from './swipe/swipe.vue'
 import SwipeItem from './swipe/swipe-item.vue'
 import PullRefresh from './pull-refresh/pull-refresh.vue'
+import Navbar from './navbar/navbar.vue'
 import Toast from './toast/'
 
 import './assets/fonts/iconfont.css';
@@ -22,7 +23,8 @@ const components = [
   Popup,
   Swipe,
   SwipeItem,
-  PullRefresh
+  PullRefresh,
+  Navbar
 ]
 
 // const exToast = Vue.extend(Toast)

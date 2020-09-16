@@ -220,8 +220,6 @@
     display: flex;
   }
 
-  .sun-swipe-track-vertical {}
-
   .sun-swipe-indicators {
     position: absolute;
     left: 50%;

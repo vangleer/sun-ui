@@ -1,5 +1,7 @@
 <template>
-  <div class="app"></div>
+  <div class="app">
+
+  </div>
 </template>
 
 <script>
@@ -9,6 +11,10 @@
 
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
+  * {
+    margin: 0;
+    padding: 0;
+  }
 
 </style>
