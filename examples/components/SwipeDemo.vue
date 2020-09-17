@@ -1,14 +1,15 @@
 <template>
   <div class="app">
-    <sun-swipe ref="mySwipe" autoplay indicator-color="green" @change="handleChange">
+    <sun-swipe ref="mySwipe" indicator-color="green" square-indicators indicator-active-color="red"
+      @change="handleChange">
       <sun-swipe-item v-for="(item,index) in list" :key="index">
         <img :src="item" alt="">
       </sun-swipe-item>
-      <template #indicator>
+      <!-- <template #indicator>
         <div class="custom-indicator">
           {{ current + 1 }}/{{list.length}}
         </div>
-      </template>
+      </template> -->
     </sun-swipe>
 
     <sun-button type="primary" @click="$refs.mySwipe.next()">下一张</sun-button>

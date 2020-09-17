@@ -10,8 +10,10 @@
     <slot name="indicator"></slot>
     <div class="sun-swipe-indicators" :class="{'sun-swipe-indicators-vertical':vertical}"
       v-if="showIndicators&&!this.$slots.indicator">
-      <span class="sun-swipe-indicator" :class="i===index?'sun-swipe-indicator-active':''" v-for="(item,i) in count"
-        :key="item" :style="{backgroundColor:i===index?indicatorColor:'#fff'}"></span>
+      <span class="sun-swipe-indicator"
+        :class="[i===index?'sun-swipe-indicator-active':'',squareIndicators?'sun-swipe-indicator-square':'']"
+        v-for="(item,i) in count" :key="item"
+        :style="{backgroundColor:i===index?indicatorActiveColor:indicatorColor}"></span>
     </div>
   </div>
 </template>
@@ -28,7 +30,7 @@
       },
       duration: { // 轮播过渡时间
         type: Number,
-        default: 300
+        default: 200
       },
       showIndicators: { // 是否显示指示器
         type: Boolean,
@@ -51,7 +53,14 @@
       },
       indicatorColor: {
         type: String,
-        default: '#1989fa'
+        default: 'rgba(0, 0, 0, 0.1)'
+      },
+      indicatorActiveColor: {
+        type: String,
+        default: '#fff'
+      },
+      squareIndicators: {
+        type: Boolean
       }
     },
     data() {
@@ -63,6 +72,7 @@
         w: 0,
         totalW: 0,
         timer: null,
+        totalCount: 0,
         count: 0,
         translate: 'translate',
         styleObj: {
@@ -83,11 +93,21 @@
       this.totalW = this.w * this.count
       // 判断是translateY还是translateX
       this.translate = this.vertical ? this.translate + 'Y' : this.translate + 'X'
+      console.log('yes')
+      // 拷贝第一张和最后一张
 
+      let firstNode = this.$refs.swipeTrack.children[0].cloneNode(true)
+      let lastNode = this.$refs.swipeTrack.children[this.count - 1].cloneNode(true)
+
+      this.$refs.swipeTrack.appendChild(firstNode)
+      this.$refs.swipeTrack.insertBefore(lastNode, this.$refs.swipeTrack.children[0])
+
+      this.totalCount = this.$refs.swipeTrack.children.length
       // 是否autoPlay
       this.handleAutoplay()
       // 设置到当前索引的位置
-      this.setTranslate(-this.index * this.w)
+      this.setTranslate()
+      console.log(this.totalCount)
     },
     methods: {
       // 自动播放方法
@@ -116,35 +136,17 @@
         e = e || window.event
         this.distance = this.vertical ? e.changedTouches[0].clientY - this.start : e.changedTouches[0].clientX - this
           .start
-        if (this.index <= 0) {
-          this.$refs.swipeTrack.lastElementChild.style.transform = `${this.translate}(${-this.totalW}px)`
-        }
-        if (this.index >= this.count - 1) {
-          this.$refs.swipeTrack.firstElementChild.style.transform = `${this.translate}(${this.totalW}px)`
-        }
-        // console.log(this.$refs.swipeTrack.offsetLeft)
-        this.styleObj.transform = `${this.translate}(${-this.index*this.w+this.distance}px)`
+        this.styleObj.transform = `${this.translate}(${-(this.index+1)*this.w+this.distance}px)`
       },
       // 滑动结束事件
       handleTouchend(e) {
-        // `${this.translate}(${0}px)`
-        this.$refs.swipeTrack.lastElementChild.style.transform = `none`
-        this.$refs.swipeTrack.firstElementChild.style.transform = `none`
+
         e = e || window.event
         if (Math.abs(this.distance) >= (this.w / 3)) {
           if (this.distance > 0) { // 右滑
             this.index--
-            if (this.index < 0) {
-              this.index = this.count - 1
-              this.removeTransition()
-            }
-
           } else { // 左滑
             this.index++
-            if (this.index > this.count - 1) {
-              this.index = 0
-              this.removeTransition()
-            }
           }
         }
         this.move()
@@ -161,30 +163,25 @@
         this.styleObj.webkitTransition = "none";
       },
       move() {
-        if (this.index < 0) {
-          this.index = this.count - 1
-        }
-        if (this.index > this.count - 1) {
-          this.index = 0
-        }
-        // 添加过度
         this.addTransition()
-        this.setTranslate(-this.index * this.w)
+        this.setTranslate()
       },
       handleTransitionend() {
+        console.log('过度结束')
         if (this.index < 0) {
           this.removeTransition()
-          this.index = this.count - 1
-          this.setTranslate(-this.index * this.w)
+          this.index = this.totalCount - 3
+          this.setTranslate()
         }
-        if (this.index > this.count - 1) {
+        if (this.index >= this.totalCount - 2) {
           this.removeTransition()
           this.index = 0
-          this.setTranslate(-this.index * this.w)
+          this.setTranslate()
         }
         this.$emit('change', this.index)
       },
-      setTranslate(translate) {
+      setTranslate() {
+        const translate = -(this.index + 1) * this.w
         this.styleObj.transform = `${this.translate}(${translate}px)`
       },
       // 上一个
@@ -225,6 +222,7 @@
     left: 50%;
     bottom: 20px;
     transform: translateX(-50%);
+    z-index: 1;
 
     .sun-swipe-indicator {
       width: 8px;
@@ -232,6 +230,15 @@
       display: inline-block;
       border-radius: 50%;
       background-color: #fff;
+      margin-right: 10px;
+    }
+
+    .sun-swipe-indicator-square {
+      width: 16px;
+      height: 3px;
+      display: inline-block;
+      border-radius: 3px;
+      // background-color: rgba(0, 0, 0, 0.2);
       margin-right: 10px;
     }
 

@@ -12,8 +12,10 @@ import PullRefresh from './pull-refresh/pull-refresh.vue'
 import Navbar from './nav-bar/nav-bar.vue'
 import Tabbar from './tab-bar/tab-bar.vue'
 import TabbarItem from './tab-bar/tab-bar-item.vue'
+import Tabs from './tab/tabs.vue'
 import Toast from './toast/'
-
+import Message from './message/message.vue'
+import MessageMethod from './message/index'
 import './assets/fonts/iconfont.css';
 import './assets/css/base.css'
 const components = [
@@ -28,7 +30,9 @@ const components = [
   PullRefresh,
   Navbar,
   Tabbar,
-  TabbarItem
+  TabbarItem,
+  Tabs,
+  Message
 ]
 
 // const exToast = Vue.extend(Toast)
@@ -39,6 +43,7 @@ const install = function (Vue) {
     Vue.component(item.name, item)
   })
   Vue.prototype.$toast = Toast
+  Vue.prototype.$message = MessageMethod
 }
 
 // 判断是否引入的全局文件，如果是就不用调用Vue.use()，而是直接调用install方法

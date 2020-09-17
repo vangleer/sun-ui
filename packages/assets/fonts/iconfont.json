@@ -6,6 +6,139 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "1048621",
+      "name": "成功",
+      "font_class": "chenggong",
+      "unicode": "e622",
+      "unicode_decimal": 58914
+    },
+    {
+      "icon_id": "2510835",
+      "name": "message",
+      "font_class": "msg",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "4650909",
+      "name": "loading",
+      "font_class": "loading1",
+      "unicode": "e628",
+      "unicode_decimal": 58920
+    },
+    {
+      "icon_id": "5312872",
+      "name": "warning",
+      "font_class": "jinggao",
+      "unicode": "e60f",
+      "unicode_decimal": 58895
+    },
+    {
+      "icon_id": "6078976",
+      "name": "loading_2",
+      "font_class": "loading2",
+      "unicode": "e602",
+      "unicode_decimal": 58882
+    },
+    {
+      "icon_id": "6999613",
+      "name": "wechat",
+      "font_class": "tubiaozhizuomoban-",
+      "unicode": "e631",
+      "unicode_decimal": 58929
+    },
+    {
+      "icon_id": "7436247",
+      "name": "warning",
+      "font_class": "jingshix",
+      "unicode": "e603",
+      "unicode_decimal": 58883
+    },
+    {
+      "icon_id": "11334111",
+      "name": "Y银联-loading",
+      "font_class": "loading3",
+      "unicode": "e646",
+      "unicode_decimal": 58950
+    },
+    {
+      "icon_id": "13198710",
+      "name": "首页-选中",
+      "font_class": "home",
+      "unicode": "e641",
+      "unicode_decimal": 58945
+    },
+    {
+      "icon_id": "13705053",
+      "name": "foundation info",
+      "font_class": "foundationinfo",
+      "unicode": "eb73",
+      "unicode_decimal": 60275
+    },
+    {
+      "icon_id": "13819447",
+      "name": "失败",
+      "font_class": "shibai",
+      "unicode": "e71b",
+      "unicode_decimal": 59163
+    },
+    {
+      "icon_id": "14034510",
+      "name": "成功",
+      "font_class": "chenggong1",
+      "unicode": "e75a",
+      "unicode_decimal": 59226
+    },
+    {
+      "icon_id": "14300270",
+      "name": "失 败",
+      "font_class": "shibai1",
+      "unicode": "e651",
+      "unicode_decimal": 58961
+    },
+    {
+      "icon_id": "14633775",
+      "name": "info",
+      "font_class": "info",
+      "unicode": "e6bd",
+      "unicode_decimal": 59069
+    },
+    {
+      "icon_id": "15725706",
+      "name": "Y银联-loading",
+      "font_class": "loading4",
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    },
+    {
+      "icon_id": "1381408",
+      "name": "loading1",
+      "font_class": "loading",
+      "unicode": "e633",
+      "unicode_decimal": 58931
+    },
+    {
+      "icon_id": "2861028",
+      "name": "Loading",
+      "font_class": "Loading",
+      "unicode": "e65d",
+      "unicode_decimal": 58973
+    },
+    {
+      "icon_id": "7215720",
+      "name": "Loading",
+      "font_class": "Loading1",
+      "unicode": "e6e8",
+      "unicode_decimal": 59112
+    },
+    {
+      "icon_id": "9358793",
+      "name": "success",
+      "font_class": "success",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
       "icon_id": "30509",
       "name": "加",
       "font_class": "jiajian02",
