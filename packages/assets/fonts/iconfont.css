@@ -20,7 +20,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.sun-icon-success:before {
+.sun-icon-success-o:before {
   content: "\e622";
 }
 
@@ -64,7 +64,7 @@
   content: "\e71b";
 }
 
-.sun-icon-chenggong1:before {
+.sun-icon-success:before {
   content: "\e75a";
 }
 

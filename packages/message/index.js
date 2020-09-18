@@ -29,7 +29,7 @@ const Message = function (options = {}) {
   console.log(instance.$el)
 }
 
-let methods = ['success', 'fail', 'clear', 'loading']
+let methods = ['success', 'error', 'info', 'warning', 'loading']
 
 methods.forEach(type => {
   Message[type] = function (options) {
@@ -38,8 +38,8 @@ methods.forEach(type => {
         message: options
       }
     }
-    Toast({
-      type: type,
+    Message({
+      icon: type,
       ...options
     })
   }

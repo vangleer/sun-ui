@@ -16,6 +16,8 @@ import Tabs from './tab/tabs.vue'
 import Toast from './toast/'
 import Message from './message/message.vue'
 import MessageMethod from './message/index'
+import Checkbox from './form/checkbox.vue'
+import CheckboxGroup from './form/checkboxGroup.vue'
 import './assets/fonts/iconfont.css';
 import './assets/css/base.css'
 const components = [
@@ -32,7 +34,9 @@ const components = [
   Tabbar,
   TabbarItem,
   Tabs,
-  Message
+  Message,
+  Checkbox,
+  CheckboxGroup
 ]
 
 // const exToast = Vue.extend(Toast)

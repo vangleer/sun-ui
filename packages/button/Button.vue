@@ -64,6 +64,10 @@
       round: {
         type: Boolean,
         default: false
+      },
+      effectWidth: {
+        type: String,
+        default: '6px'
       }
     },
     data() {
@@ -73,9 +77,7 @@
         styleObj: {}
       };
     },
-    created() {
-      console.log(this.plain);
-    },
+    created() {},
     mounted() {
       const {
         color,
@@ -104,7 +106,11 @@
       }
     },
     methods: {
-      handleBtnClick() {
+      handleBtnClick(e) {
+        const button = window.getComputedStyle ? window.getComputedStyle(e.currentTarget, null) : e.currentTarget
+          .currentStyle;
+        const borderColor = button.borderColor
+        document.styleSheets[0].addRule('.is-extra::after', `border: ${this.effectWidth} solid ${borderColor};`);
         // 控制动画
         this.isExtraMode = true;
         if (!this.isExtra) {
@@ -138,20 +144,6 @@
     color: inherit;
   }
 
-  @keyframes btnScale {
-    from {
-      display: block;
-      width: 100%;
-      height: 100%;
-    }
-
-    to {
-      width: 120%;
-      height: 120%;
-      display: none;
-    }
-  }
-
   .btn-before {
     content: "";
     position: absolute;
@@ -162,6 +154,7 @@
     opacity: 0.1;
     width: 100%;
     height: 100%;
+    border-radius: inherit;
   }
 
   .btn-after(@color) {
@@ -171,17 +164,11 @@
     top: 50%;
     transform: translate(-50%, -50%);
     z-index: 1;
-    background-color: @color;
-    opacity: 0.08;
+    opacity: 0.1;
     width: 100%;
     height: 100%;
-    border-radius: 3px;
-  }
-
-  .is-extra {
-    &::after {
-      animation: btnScale 0.2s;
-    }
+    border-radius: inherit;
+    transition: all 0.2s;
   }
 
   .sun-btn {
@@ -208,6 +195,20 @@
       &::before {
         .btn-before;
       }
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+      opacity: 0.1;
+      width: 100%;
+      height: 100%;
+      border-radius: inherit;
+      transition: all 0.2s;
     }
   }
 
@@ -237,76 +238,44 @@
     color: @button-primary-color;
     background: @button-primary-background-color;
     border-color: @button-primary-border-color;
-
-    &::after {
-      .btn-after(@button-primary-background-color);
-    }
   }
 
   .sun-btn-primary.sun-btn-plain {
     background-color: @button-plain-background-color;
     color: @button-primary-background-color;
-
-    &::after {
-      display: none;
-    }
   }
 
   .sun-btn-info {
     color: @button-info-color;
     background: @button-info-background-color;
     border-color: @button-info-border-color;
-
-    &::after {
-      .btn-after(@button-info-background-color);
-    }
   }
 
   .sun-btn-info.sun-btn-plain {
     background-color: @button-plain-background-color;
     color: @button-info-border-color;
-
-    &::after {
-      display: none;
-    }
   }
 
   .sun-btn-danger {
     color: @button-danger-color;
     background: @button-danger-background-color;
     border-color: @button-danger-border-color;
-
-    &::after {
-      .btn-after(@button-danger-background-color);
-    }
   }
 
   .sun-btn-danger.sun-btn-plain {
     background-color: @button-plain-background-color;
     color: @button-danger-background-color;
-
-    &::after {
-      display: none;
-    }
   }
 
   .sun-btn-warning {
     color: @button-warning-color;
     background: @button-warning-background-color;
     border-color: @button-warning-border-color;
-
-    &::after {
-      .btn-after(@button-warning-background-color);
-    }
   }
 
   .sun-btn-warning.sun-btn-plain {
     background-color: @button-plain-background-color;
     color: @button-warning-background-color;
-
-    &::after {
-      display: none;
-    }
   }
 
   .sun-btn-disabled {
@@ -317,7 +286,6 @@
 
   .sun-btn-round {
     border-radius: 30px;
-    overflow: hidden;
   }
 
 </style>
