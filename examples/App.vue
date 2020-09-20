@@ -3,16 +3,12 @@
 </template>
 
 <script>
-  export default {
-
-  }
-
+export default {}
 </script>
 
-<style lang="less" scoped>
-  * {
-    margin: 0;
-    padding: 0;
-  }
-
+<style lang="less">
+* {
+  margin: 0;
+  padding: 0;
+}
 </style>
