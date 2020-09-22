@@ -19,6 +19,8 @@ import MessageMethod from './message/index'
 import Checkbox from './form/checkbox.vue'
 import CheckboxGroup from './form/checkboxGroup.vue'
 import Switch from './form/switch.vue'
+import Rate from './form/rate.vue'
+import Slider from './form/slider.vue'
 import './assets/fonts/iconfont.css';
 import './assets/css/base.css'
 const components = [
@@ -38,7 +40,9 @@ const components = [
   Message,
   Checkbox,
   CheckboxGroup,
-  Switch
+  Switch,
+  Rate,
+  Slider
 ]
 
 // const exToast = Vue.extend(Toast)

@@ -1,6 +1,14 @@
+# Vue 实现 Switch 组件-通过 vue.use()注册
+
+## 组件封装代码 components/switch/switch.vue
+
+```javascript
 <template>
-  <div class="sun-switch" :class="{'sun-switch-on':value,'sun-switch-disabled':disabled}"
-    :style="{fontSize:size,backgroundColor:CalBgColor}" @click="handleChange">
+  <div class="sun-switch"
+      :class="{'sun-switch-on':value,'sun-switch-disabled':disabled}"
+      :style="{fontSize:size,backgroundColor:CalBgColor}"
+      @click="handleChange"
+  >
     <div class="sun-switch-node">
       <i class="sun-icon sun-icon-loading" :style="{color:CalBgColor}"></i>
     </div>
@@ -9,8 +17,13 @@
 
 <script>
   export default {
-    name: 'SunSwitch',
+    name: 'SunSwitch', // 组件名
     props: {
+      /*
+        <sun-switch v-model="checked"></sun-switch>
+        在使用v-model的使用Vue会自动为组件传递一个value属性，值是 checked
+        如果要改变v-model的值需要出发input方法 this.$emit('input',value)
+      */
       value: { // v-model传递过来的值
         type: Boolean,
       },
@@ -145,3 +158,83 @@
   }
 
 </style>
+```
+
+## 注册组件 components/index.js
+
+```javascript
+/*
+  这种方式主要是实现vue.use(方式的注册)
+*/
+
+// 首先导入Switch组件
+import Switch from './switch/switch.vue'
+
+// 创建一个install方法接收一个Vue为参数
+const install = function(Vue) {
+  /*
+    使用Vue注册组件组件名为Switch的name属性
+  */
+  Vue.component(Switch.name, Switch)
+}
+
+/*
+  默认导出一个对象，这个对象中要有install方法
+  在使用vue.use(组件)是会调用这个install方法，而且会把Vue传进去
+*/
+export default {
+  install,
+}
+```
+
+## 在 main.js 中添加如下代码
+
+```javascript
+// 导入
+import switch from './components/index'
+// 注册
+Vue.use(switch)
+```
+
+## 测试代码 app.vue
+
+```javascript
+<template>
+  <div class="app">
+
+    <!-- 基础用法 -->
+    <sun-switch v-model="checked"></sun-switch>
+    <!-- 大小 -->
+    <sun-switch size="10" v-model="checked"></sun-switch>
+    <!-- 是否禁用 -->
+    <sun-switch disabled v-model="checked"></sun-switch>
+    <!-- 自定义颜色 -->
+    <sun-switch size="10" active-color="green" inactive-color="red" v-model="checked"></sun-switch>
+    <!-- 事件 -->
+    <sun-switch @click="handleClick" @change="handleChange" v-model="checked"></sun-switch>
+  </div>
+</template>
+
+<script>
+  export default {
+    data() {
+      return {
+        checked: true,
+      }
+    },
+    methods: { // 监听状态改变事件
+      handleChange(value) {
+        console.log(value)
+      },
+      handleClick(e) {
+        console.log('点我了', e)
+      },
+    },
+  }
+
+</script>
+
+<style lang="less">
+</style>
+
+```
