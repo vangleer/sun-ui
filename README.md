@@ -1,24 +1,25 @@
-# sun-ui
+<h1 align="center">vue-sun-ui</h1>
 
-## Project setup
-```
-npm install
-```
+## Install
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+```bash
+# Using npm
+npm i vue-sun-ui -S
 
-### Compiles and minifies for production
-```
-npm run build
+# Using yarn
+yarn add vue-sun-ui
 ```
 
-### Lints and fixes files
-```
-npm run lint
+## Quickstart
+
+```js
+import Vue from 'vue'
+// 引入vue-sun-ui
+import SunUi from 'vue-sun-ui'
+// 导入vue-sun-ui样式
+import 'vue-sun-ui/dist/vue-sun-ui.css'
+
+Vue.use(SunUi)
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+<!-- See more in [Quickstart](https://youzan.github.io/vant#/en-US/quickstart). -->
