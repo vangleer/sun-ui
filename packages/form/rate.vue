@@ -1,9 +1,9 @@
 <template>
   <div class="sun-rate" :class="{'sun-rate-disabled':disabled}">
-    <div class="sun-rate-item" v-for="item in calCount" :style="{marginRight:calGutter}" :key="item"
+    <div class="sun-rate-item" v-for="item in calCount" :style="{marginRight:$calSize(gutter)}" :key="item"
       @click="handleClick(item)">
       <i class="sun-icon" :class="[item<=value?'sun-icon-'+icon:'sun-icon-'+voidIcon]"
-        :style="{color:item<=value?color:voidColor,fontSize:calSize}"></i>
+        :style="{color:item<=value?color:voidColor,fontSize:$calSize(size)}"></i>
     </div>
   </div>
 </template>
@@ -49,12 +49,6 @@
       }
     },
     computed: {
-      calGutter() {
-        return /px|em|rem|%/.test(this.gutter) ? this.gutter : this.gutter + 'px'
-      },
-      calSize() {
-        return /px|em|rem|%/.test(this.size) ? this.size : this.size + 'px'
-      },
       calCount() {
         return parseInt(this.count)
       }

@@ -1,6 +1,6 @@
 <template>
   <div class="sun-switch" :class="{'sun-switch-on':value,'sun-switch-disabled':disabled}"
-    :style="{fontSize:size,backgroundColor:CalBgColor}" @click="handleChange">
+    :style="{fontSize:$calSize(size),backgroundColor:CalBgColor}" @click="handleChange">
     <div class="sun-switch-node">
       <i class="sun-icon sun-icon-loading" :style="{color:CalBgColor}"></i>
     </div>
@@ -37,14 +37,6 @@
       },
     },
     computed: {
-      /**
-       * 计算大小
-       *    1.如果包含单位就直接使用
-       *    2.如果没有单位默认添加 px 为单位
-       */
-      calSize() {
-        return /px|em|rem|%/.test(this.size) ? this.size : this.size + 'px'
-      },
       /**
        * 计算背景颜色
        *    1.如果value为true就使用activeColor颜色

@@ -1,9 +1,9 @@
 <template>
   <component :is="tag" @click="handleIconClick" class="sun-icon" :class="{['sun-icon-'+name]:!isUrl}"
-    :style="{color:color,fontSize:fontSize}">
+    :style="{color:color,fontSize:$calSize(size)}">
     <span v-if="dot" class="sun-icon-dot" :style="{backgroundColor: dotColor}"></span>
     <span v-if="badge" class="sun-icon-badge">{{badge}}</span>
-    <img class="sun-icon-img" :style="{width:fontSize,height:fontSize}" v-if="isUrl" :src="name" alt="">
+    <img class="sun-icon-img" :style="{width:$calSize(size),height:$calSize(size)}" v-if="isUrl" :src="name" alt="">
   </component>
 </template>
 
@@ -43,18 +43,12 @@
     },
     data() {
       return {
-        fontSize: '',
         isUrl: false
       }
     },
     mounted() {
       if (this.name.indexOf('.') !== -1 || this.name.indexOf('/') !== -1) {
         this.isUrl = true
-      }
-      if (this.size.indexOf('em') !== -1) {
-        this.fontSize = this.size
-      } else {
-        this.fontSize = parseInt(this.size) + 'px'
       }
     },
     methods: {

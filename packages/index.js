@@ -54,6 +54,9 @@ const install = function (Vue) {
   })
   Vue.prototype.$toast = Toast
   Vue.prototype.$message = MessageMethod
+  Vue.prototype.$calSize = function (size) {
+    return /px|em|rem|%/.test(size) ? size : size + 'px'
+  }
 }
 
 // 判断是否引入的全局文件，如果是就不用调用Vue.use()，而是直接调用install方法

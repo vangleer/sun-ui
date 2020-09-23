@@ -3,8 +3,8 @@
     <button v-if="showMinus" class="sun-stepper-minus" :class="{'sun-stepper-minus-disabled':disabledMin}"
       @click="handleMinusClick" :style="buttonStyle">-</button>
     <input type="text" class="sun-stepper-input" v-model.number="model"
-      :class="{'sun-stepper-input-disabled':disabledText}" :disabled="disabledText" :style="{width:calSize(inputWidth)}"
-      @focus="$emit('focus')" @blur="$emit('blur')">
+      :class="{'sun-stepper-input-disabled':disabledText}" :disabled="disabledText"
+      :style="{width:$calSize(inputWidth)}" @focus="$emit('focus')" @blur="$emit('blur')">
     <button v-if="showPlus" class="sun-stepper-plus" :class="{'sun-stepper-plus-disabled':disabledMax}"
       @click="handlePlusClick" :style="buttonStyle">+</button>
   </div>
@@ -89,8 +89,8 @@
       console.log(this.disablePlus, this.disabledMax)
       if (!!this.buttonSize) {
         this.buttonStyle = {
-          width: this.calSize(this.buttonSize),
-          height: this.calSize(this.buttonSize)
+          width: this.$calSize(this.buttonSize),
+          height: this.$calSize(this.buttonSize)
         }
       }
     },
@@ -104,10 +104,7 @@
         if (this.disabledMax) return this.$emit('overlimit')
         this.model += parseInt(this.step)
         this.$emit('plus')
-      },
-      calSize(size) {
-        return /px|em|rem|%/.test(size) ? size : size + 'px'
-      },
+      }
     }
   }
 

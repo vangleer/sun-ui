@@ -1,6 +1,8 @@
 <template>
   <div class="app">
     <sun-button type="primary">点我呀</sun-button>
+    <sun-button type="primary">点我呀</sun-button>
+    <sun-button type="primary">点我呀</sun-button>
   </div>
 </template>
 

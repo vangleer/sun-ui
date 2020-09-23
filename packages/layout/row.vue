@@ -44,11 +44,10 @@
       handleCalGutter() {
         let rowList = this.$refs.rows.children
         if (rowList.length !== 0) {
-          this.calGutter = parseInt(this.gutter)
           for (let i = 0; i < rowList.length - 1; i++) {
-            rowList[i].style.marginRight = `${this.calGutter}px`
+            rowList[i].style.marginRight = this.$calSize(this.gutter)
           }
-          rowList[rowList.length].style.marginRight = this.calGutter + 'px'
+          rowList[rowList.length].style.marginRight = '0px'
         }
       }
     }

@@ -1,7 +1,7 @@
 <template>
   <div class="app">
     <!-- 基础用法 -->
-    <sun-switch v-model="checked"></sun-switch>
+    <sun-switch v-model="checked" size="60"></sun-switch>
     <!-- 大小 -->
     <sun-switch size="10" v-model="checked"></sun-switch>
     <!-- 是否禁用 -->
@@ -14,26 +14,28 @@
 </template>
 
 <script>
-export default {
-  data() {
-    return {
-      checked: true,
-    }
-  },
-  methods: {
-    handleChange(value) {
-      console.log(value)
+  export default {
+    data() {
+      return {
+        checked: true,
+      }
     },
-    handleClick(e) {
-      console.log('点我了', e)
+    methods: {
+      handleChange(value) {
+        console.log(value)
+      },
+      handleClick(e) {
+        console.log('点我了', e)
+      },
     },
-  },
-}
+  }
+
 </script>
 
 <style lang="less">
-* {
-  margin: 0;
-  padding: 0;
-}
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
 </style>
