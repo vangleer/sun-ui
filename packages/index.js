@@ -20,7 +20,7 @@ import Checkbox from './form/checkbox.vue'
 import CheckboxGroup from './form/checkboxGroup.vue'
 import Switch from './form/switch.vue'
 import Rate from './form/rate.vue'
-import Slider from './form/slider.vue'
+import Stepper from './form/stepper.vue'
 import './assets/fonts/iconfont.css';
 import './assets/css/base.css'
 const components = [
@@ -42,7 +42,7 @@ const components = [
   CheckboxGroup,
   Switch,
   Rate,
-  Slider
+  Stepper
 ]
 
 // const exToast = Vue.extend(Toast)

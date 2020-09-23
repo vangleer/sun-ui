@@ -27,3 +27,11 @@ textarea {
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+
+a:focus,
+input:focus,
+button:focus,
+textarea:focus,
+[class*='van-']:focus {
+  outline: none;
+}
