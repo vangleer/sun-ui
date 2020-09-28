@@ -1,58 +1,32 @@
 <template>
   <div class="app">
-    <!-- 基础展示 -->
-    <div class="sun-demo-block">
-      <h2 class="sun-demo-nav-title">基础展示</h2>
-      <div class="sun-demo-nav-row">
-        <sun-cell title="单元格" value="内容" />
-        <sun-cell title="单元格" value="内容" label="描述信息" />
-      </div>
-    </div>
+    <sun-cell title="文字提示" is-link bg-cffect @click="$toast('提示内容')" />
+    <sun-cell title="加载提示" is-link bg-cffect @click="$toast.loading('加载中...')" />
+    <sun-cell title="成功提示" is-link bg-cffect @click="$toast.success('成功提示')" />
+    <sun-cell title="失败提示" is-link bg-cffect @click="$toast.fail('失败提示')" />
+    <sun-cell title="自定义图标" is-link bg-cffect @click="$toast({message:'自定义图标',icon:'like-o'})" />
+    <sun-cell title="自定义图片" is-link bg-cffect
+      @click="$toast.loading({message:'自定义图片',icon:'https://img.yzcdn.cn/vant/logo.png'})" />
+    <sun-cell title="自定义加载图标" is-link bg-cffect @click="$toast.loading({message:'加载中...',icon:'loading2'})" />
 
-    <!-- 图标展示 -->
-    <div class="sun-demo-block">
-      <h2 class="sun-demo-nav-title">图标展示</h2>
-      <div class="sun-demo-nav-row">
-        <sun-cell icon="friends" title="单元格" value="内容" />
-      </div>
-    </div>
-
-    <!-- 展示箭头 -->
-    <div class="sun-demo-block">
-      <h2 class="sun-demo-nav-title">展示箭头</h2>
-      <div class="sun-demo-nav-row">
-        <sun-cell title="单元格" is-link />
-        <sun-cell title="单元格" is-link value="内容" />
-        <sun-cell title="单元格" is-link arrow-direction="down" value="内容" />
-      </div>
-    </div>
-
-    <!-- 点击背景效果 -->
-    <div class="sun-demo-block">
-      <h2 class="sun-demo-nav-title">点击背景效果</h2>
-      <div class="sun-demo-nav-row">
-        <sun-cell title="单元格" :bgEffect="true" />
-        <sun-cell title="单元格" :bgEffect="false" value="内容" />
-      </div>
-    </div>
-
-    <!-- 使用插槽 -->
-    <div class="sun-demo-block">
-      <h2 class="sun-demo-nav-title">使用插槽</h2>
-      <div class="sun-demo-nav-row">
-        <sun-cell>
-          <template #title>
-            <span>这是单元格</span>
-            <sun-button size="mini" type="danger">按钮</sun-button>
-          </template>
-        </sun-cell>
-      </div>
-    </div>
+    <sun-cell title="顶部展示" is-link bg-cffect @click="$toast({message:'顶部展示', position: 'top'})" />
+    <sun-cell title="底部展示" is-link bg-cffect @click="$toast({message:'底部展示', position: 'bottom'})" />
   </div>
 </template>
 
 <script>
-  export default {};
+  export default {
+    data() {
+      return {
+        showCenter: false
+      }
+    },
+    methods: {
+      handleShow() {
+        this.showCenter = true
+      }
+    }
+  };
 
 </script>
 

@@ -11,7 +11,7 @@ let instance
 
 // 创建一个Toast函数
 const Toast = function (options = {}) {
-  let toasts = Array.from(document.querySelectorAll('.sun-toast-box'))
+  let toasts = Array.from(document.querySelectorAll('.sun-toast'))
   toasts.forEach(item => document.body.removeChild(item))
   if (typeof options === 'string') {
     options = {

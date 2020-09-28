@@ -1,12 +1,15 @@
 <template>
-  <transition :name="'sun-'+position" mode="in-out">
-    <div @click="handleToastClick" v-show="isShow" class="sun-toast" :class="['sun-toast-'+position,className]">
+  <transition :name="'sun-'+position">
+    <div @click="handleToastClick" v-show="isShow" :style="{padding:isPadding?'20px':'8px 16px'}" class="sun-toast"
+      :class="['sun-toast-'+position,className]">
       <div v-if="type==='success'" class="sun-toast-success"
-        :class="['sun-icon',!icon?'sun-icon-donw':'sun-icon-'+icon]"></div>
-      <div v-if="type==='fail'" class="sun-toast-fail"
-        :class="['sun-icon',!icon?'sun-icon-gantanhao':'sun-icon-'+icon]"></div>
+        :class="['sun-icon',!icon?'sun-icon-success':'sun-icon-'+icon]"></div>
+      <div v-if="type==='fail'" class="sun-toast-fail" :class="['sun-icon',!icon?'sun-icon-warning':'sun-icon-'+icon]">
+      </div>
       <div v-if="type==='loading'" class="sun-toast-loading"
-        :class="['sun-icon',!icon?'sun-icon-up':'sun-icon-'+icon,isShow?'sun-toast-loading-rotate':'']"></div>
+        :class="['sun-icon',!icon?'sun-icon-loading':'sun-icon-'+icon,isShow?'sun-toast-loading-rotate':'']"></div>
+      <div v-if="type==='text'&&!isImg&&!!icon" class="sun-icon" :class="{['sun-icon-'+icon]:!!icon}"></div>
+      <img v-if="isImg" class="sun-icon sun-icon-img" :src="icon" alt="">
       <span>{{message}}</span>
     </div>
   </transition>
@@ -32,6 +35,14 @@
         styleObj: {
           opacity: 0.5
         },
+      }
+    },
+    computed: {
+      isImg() {
+        return /\.|\//.test(this.icon)
+      },
+      isPadding() {
+        return !!this.icon || this.type !== 'text'
       }
     },
     created() {
@@ -94,12 +105,20 @@
     background-color: rgba(0, 0, 0, 0.7);
     max-width: 80%;
     border-radius: 10px;
-    padding: 8px 12px;
+    padding: 8px 16px;
     cursor: pointer;
     text-align: center;
+    min-width: 96px;
 
     span {
       color: #fff;
+    }
+
+    .sun-icon {
+      text-align: center;
+      display: block;
+      font-size: 34px;
+      margin-bottom: 16px;
     }
 
     // 成功图标样式
@@ -108,8 +127,8 @@
     .sun-toast-loading {
       text-align: center;
       display: block;
-      font-size: 50px;
-      font-weight: 700;
+      font-size: 34px;
+      margin-bottom: 16px;
     }
 
     .sun-toast-loading-rotate {
@@ -120,59 +139,59 @@
   .sun-toast-center {
     left: 50%;
     top: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -66%);
   }
 
   .sun-toast-top {
-    top: 0px;
+    top: 12px;
     left: 50%;
-    transform: translate(-50%, 20px);
-    transition: transform 0.4s;
+    transform: translateX(-50%);
   }
 
   .sun-toast-bottom {
-    bottom: 20px;
+    bottom: 12px;
     left: 50%;
-    transform: translate(-50%, 0%);
+    transform: translateX(-50%);
   }
 
   // 默认显示
   .sun-center-enter-active,
   .sun-center-leave-active {
-    transition: opacity 0.4s;
+    transition: all 0.3s;
   }
 
   .sun-center-enter,
   .sun-center-leave-to {
-    transition: opacity 0.4s;
     opacity: 0;
+    margin-top: -13px;
   }
 
   // 上
   .sun-top-leave-active,
   .sun-top-enter-active {
-    transition-property: transform, opacity;
-    transition-duration: 0.4s;
+    transition: transform 0.2s;
   }
 
   .sun-top-enter,
   .sun-top-leave-to {
-
     transform: translate(-50%, -100%);
-    opacity: 0;
   }
 
   // 下
   .sun-bottom-leave-active,
   .sun-bottom-enter-active {
-    transition-property: transform, opacity;
-    transition-duration: 0.4s;
+    transition: transform 0.2s;
   }
 
   .sun-bottom-enter,
   .sun-bottom-leave-to {
     transform: translate(-50%, 100%);
-    opacity: 0;
+  }
+
+  .sun-icon-img {
+    width: 40px;
+    height: 40px;
+    margin: 0 auto;
   }
 
 </style>

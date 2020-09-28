@@ -68,7 +68,7 @@
       arrowDirection: {
         // 箭头方向
         type: String,
-        default: 'right',
+        default: 'arrow-right',
       },
       titleStyle: {
         default: '',

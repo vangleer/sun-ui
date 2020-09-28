@@ -7,7 +7,9 @@
         :src="closeIcon" alt @click="handleCrossClick" />
       <i v-if="closeable&&!isUrl" class="sun-icon sun-popup-cross"
         :class="['sun-icon-'+closeIcon,'sun-popup-icon-close-'+closeIconPosition]" @click="handleCrossClick"></i>
+      <slot></slot>
     </div>
+
   </component>
 </template>
 
@@ -53,7 +55,7 @@
       closeIcon: {
         // 图标名称
         type: String,
-        default: 'cheng',
+        default: 'cross',
       },
       closeIconPosition: {
         type: String,
