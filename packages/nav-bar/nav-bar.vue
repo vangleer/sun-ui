@@ -5,7 +5,7 @@
       <slot name="left"></slot>
     </div>
     <div v-else class="sun-nav-bar-left" @click="handleLeftClick">
-      <i v-if="leftArrow" class="sun-icon sun-icon-left"></i>
+      <i v-if="leftArrow" class="sun-icon sun-icon-arrow-left"></i>
       <span>{{leftText}}</span>
     </div>
 

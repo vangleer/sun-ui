@@ -84,7 +84,7 @@
       },
       bgEffect: {
         type: Boolean,
-        default: true,
+        default: false,
       },
     },
     data() {
@@ -119,7 +119,7 @@
   /* 遮盖效果 */
   @keyframes fader {
     0% {
-      width: 0;
+      width: 50%;
       height: 80%;
     }
 
@@ -163,7 +163,7 @@
       height: 0px;
 
       background-color: rgba(0, 0, 0, 0.2);
-      animation: fader 1s;
+      animation: fader 0.5s;
     }
   }
 

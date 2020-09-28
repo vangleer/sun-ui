@@ -1,6 +1,6 @@
 <template>
   <div class="app">
-    <sun-nav-bar title="我的" left-text="返回" border right-text="搜索" @left-click="handleLeftClick">
+    <sun-nav-bar title="我的" left-arrow border right-text="搜索" @left-click="handleLeftClick">
       <template #left>
         左左
       </template>
