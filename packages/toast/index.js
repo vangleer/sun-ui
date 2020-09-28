@@ -27,13 +27,9 @@ const Toast = function (options = {}) {
 
   // 挂载到body中
   document.body.appendChild(instance.$el)
-
-  // setTimeout(() => {
-
-  // }, instance.duration * 1.5)
-
+  return instance
 }
-let methods = ['success', 'fail', 'clear', 'loading']
+let methods = ['success', 'fail', 'loading']
 
 methods.forEach(type => {
   Toast[type] = function (options) {
@@ -42,7 +38,7 @@ methods.forEach(type => {
         message: options
       }
     }
-    Toast({
+    return Toast({
       type: type,
       ...options
     })

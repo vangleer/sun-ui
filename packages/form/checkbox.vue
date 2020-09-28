@@ -3,15 +3,18 @@
     :class="{'sun-checkbox-disabled':isDisabled,'sun-checkbox-reverse':labelPosition==='left'}">
     <div class="sun-checkbox-wrap" @click="handleCheckboxClick"
       :class="[isChecked?'sun-checkbox-checked':'sun-checkbox-checked-no','sun-checkbox-icon-'+shape]">
-      <i v-if="!$slots.icon" class="sun-icon sun-icon-success1"
+      <i v-if="!$slots.icon" class="sun-icon sun-icon-success"
         :style="{backgroundColor:isChecked?calCheckedColor:'transparent',fontSize:$calSize(calIconSize)}"></i>
-      <div v-else class="sun-icon" :style="{backgroundColor:isChecked?calCheckedColor:'transparent'}">
-        <slot name="icon"></slot>
-      </div>
+      <slot v-else class="sun-icon" name="icon" :style="{backgroundColor:isChecked?calCheckedColor:'transparent'}">
+      </slot>
     </div>
-    <span class="sun-checkbox-label">
+    <span v-if="labelDisabled" @click.stop class="sun-checkbox-label sun-checkbox-label-disabled">
       <slot>{{label}}</slot>
     </span>
+    <span v-else class="sun-checkbox-label">
+      <slot>{{label}}</slot>
+    </span>
+
   </div>
 </template>
 
@@ -48,7 +51,7 @@
       },
       iconSize: {
         type: String | Number,
-        default: 20,
+        default: 16,
       },
       checkedColor: {
         type: String,
@@ -164,7 +167,7 @@
       transition-property: color, border-color, background-color;
       transition-duration: 0.2s;
       margin: 0 6px;
-      color: transparent;
+      color: #fff;
       border: 1px solid rgba(0, 0, 0, 0);
     }
 
@@ -176,6 +179,10 @@
   .sun-checkbox-label {
     color: #323233;
     font-size: 15px;
+  }
+
+  .sun-checkbox-label-disabled {
+    opacity: 0.5;
   }
 
   .sun-checkbox-checked {

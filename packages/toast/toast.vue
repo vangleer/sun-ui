@@ -10,7 +10,7 @@
         :class="['sun-icon',!icon?'sun-icon-loading':'sun-icon-'+icon,isShow?'sun-toast-loading-rotate':'']"></div>
       <div v-if="type==='text'&&!isImg&&!!icon" class="sun-icon" :class="{['sun-icon-'+icon]:!!icon}"></div>
       <img v-if="isImg" class="sun-icon sun-icon-img" :src="icon" alt="">
-      <span>{{message}}</span>
+      <span v-html="message"></span>
     </div>
   </transition>
 </template>
@@ -47,6 +47,7 @@
     },
     created() {
       this.handleShow()
+      console.log(this.message)
     },
     methods: {
       // 点击事件
@@ -80,7 +81,10 @@
         console.log('成功了')
       },
       fail() {},
-      clear() {},
+      clear() {
+        let toasts = Array.from(document.querySelectorAll('.sun-toast'))
+        toasts.forEach(item => document.body.removeChild(item))
+      },
       loading() {},
     },
   }
