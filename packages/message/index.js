@@ -20,17 +20,20 @@ const Message = function (options = {}) {
   }
   // 创建实例
   instance = new MessageConstructor({
-    // 用opritions和data合并--options中的属性优先级要高于data
+    // 用opritions和props合并--options中的属性优先级要高于props
     data: options
   }).$mount()
 
   // 挂载到body中
   document.body.appendChild(instance.$el)
-  console.log(instance.$el)
+  return instance
 }
 
 let methods = ['success', 'error', 'info', 'warning', 'loading']
-
+Message.clear = () => {
+  let messages = Array.from(document.querySelectorAll('.sun-message'))
+  messages.forEach(item => document.body.removeChild(item))
+}
 methods.forEach(type => {
   Message[type] = function (options) {
     if (typeof options === 'string') {
@@ -38,8 +41,8 @@ methods.forEach(type => {
         message: options
       }
     }
-    Message({
-      icon: type,
+    return Message({
+      type: type,
       ...options
     })
   }

@@ -1,17 +1,18 @@
 <template>
-  <div class="sun-message">
+  <div class="sun-message" @click="handleClick">
     <transition :name="'sun-message-' + position">
       <span class="sun-message-text" v-show="show" :class="{
-          ['sun-message-text-border-' + icon]: border,
+          ['sun-message-text-border-' + type]: border,
           ['sun-message-text-' + position]: !!position
-        }">
-        <div>
-          <i v-if="!icon" class="sun-icon sun-icon-success-f"></i>
-          <i v-if="!!icon&&icon==='success'" class="sun-icon sun-icon-success-f"></i>
-          <i v-if="!!icon&&icon==='error'" class="sun-icon sun-icon-cross-f"></i>
-          <i v-if="!!icon&&icon==='info'" class="sun-icon sun-icon-info-f"></i>
-          <i v-if="!!icon&&icon==='warning'" class="sun-icon sun-icon-warning-o"></i>
-          <i v-if="!!icon&&icon==='loading'" class="sun-icon sun-icon-loading"></i>
+        }" :style="{borderColor:color}">
+        <div :class="{'sun-message-success':type==='',['sun-message-'+type]:type}" :style="{color:color}">
+          <i v-if="!icon&&!type" class="sun-icon sun-icon-success-f"></i>
+          <i v-if="!icon&&type==='success'" class="sun-icon sun-icon-success-f"></i>
+          <i v-if="!icon&&type==='error'" class="sun-icon sun-icon-cross-f"></i>
+          <i v-if="!icon&&type==='info'" class="sun-icon sun-icon-info-f"></i>
+          <i v-if="!icon&&type==='warning'" class="sun-icon sun-icon-warning-o"></i>
+          <i v-if="!icon&&type==='loading'" class="sun-icon sun-icon-loading"></i>
+          <i v-if="!!icon" class="sun-icon" :class="['sun-icon-'+icon]" :style="{color:color}"></i>
           {{ message }}
         </div>
       </span>
@@ -25,15 +26,18 @@
     data() {
       return {
         show: false,
-        message: "提示",
+        message: "",
         duration: 1500,
-        icon: "",
+        type: "",
+        icon: '',
         border: false,
-        position: "top"
+        position: "top",
+        color: ''
       };
     },
     mounted() {
       this.show = true;
+      this.onOpened && this.onOpened();
       setTimeout(() => {
         // 定时关闭
         this.show = false;
@@ -43,7 +47,12 @@
     },
     methods: {
       handleClick() {
-        this.show = !this.value;
+        this.onClick && this.onClick()
+        // this.show = !this.show;
+      },
+      clear() {
+        let messages = Array.from(document.querySelectorAll('.sun-message'))
+        messages.forEach(item => document.body.removeChild(item))
       }
     }
   };
@@ -119,30 +128,34 @@
       font-size: 18px;
     }
 
-    .sun-icon-success-f {
+    .sun-message-success {
       color: @green;
     }
 
-    .sun-icon-cross-f {
+    .sun-message-error {
       color: @red;
     }
 
-    .sun-icon-info-f {
+    .sun-message-info {
       color: @blue;
     }
 
-    .sun-icon-warning-o {
+    .sun-message-warning {
       color: @orange;
     }
 
-    .sun-icon-loading {
-      display: inline-block;
-      overflow: hidden;
-      border-radius: 50%;
-      width: 20px;
-      height: 20px;
-      animation: roate 1s linear infinite;
+    .sun-message-loading {
       color: @loading;
+
+      .sun-icon {
+        display: inline-block;
+        overflow: hidden;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        animation: roate 1s linear infinite;
+      }
+
     }
   }
 

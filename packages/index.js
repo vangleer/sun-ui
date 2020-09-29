@@ -14,7 +14,6 @@ import Tabbar from './tab-bar/tab-bar.vue'
 import TabbarItem from './tab-bar/tab-bar-item.vue'
 import Tabs from './tab/tabs.vue'
 import Toast from './toast/'
-import Message from './message/message.vue'
 import MessageMethod from './message/index'
 import Checkbox from './form/checkbox.vue'
 import CheckboxGroup from './form/checkboxGroup.vue'
@@ -37,7 +36,6 @@ const components = [
   Tabbar,
   TabbarItem,
   Tabs,
-  Message,
   Checkbox,
   CheckboxGroup,
   Switch,
