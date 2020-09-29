@@ -1,5 +1,6 @@
 <template>
   <div class="app">
+
     <sun-tabs>
       <div class="sun-tab-item">标签 1</div>
       <div class="sun-tab-item">标签 2</div>

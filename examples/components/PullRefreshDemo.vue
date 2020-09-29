@@ -1,5 +1,6 @@
 <template>
   <div class="app">
+
     <header>首页</header>
     <sun-pull-refresh v-model="isLoading" head-height="100" success-text="啦啦刷新成功啦..." @refresh="handleRefresh">
       <div class="content">内容</div>

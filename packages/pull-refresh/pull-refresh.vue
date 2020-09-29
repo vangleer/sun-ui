@@ -4,7 +4,8 @@
       @touchend="handleTouchend" ref="sunPullRefresh" :style="styleObj">
       <div class="sun-pull-refresh-head" :style="{height:headHeight+'px'}">
         <template v-if="done">
-          <img src="../assets/imgs/loading.png" class="loading_icon" alt="" v-if="status==1">
+          <i v-if="status==1&&!$slots.pulling&&!$slots.loosing" class="sun-icon sun-icon-loading loading_icon"></i>
+          <!-- <img  src="../assets/imgs/loading.png" class="loading_icon" alt=""> -->
           <span v-if="status===0&&(distance<100&&!$slots.pulling)">{{pullingText}}</span>
           <div v-if="(status===0&&distance<100)&&$slots.pulling">
             <slot name="pulling"></slot>
@@ -100,11 +101,11 @@
         let isPull = (e.touches[0].clientY - this.start) > 0 ? true : false
         if (this.flag && isPull) {
           // this.distance = ()
-
+          console.log(e.touches[0].clientY - this.start, 'asdasd')
           if (this.distance >= 150) {
             this.distance += 1
           } else {
-            this.distance += 8
+            this.distance = (e.touches[0].clientY - this.start) * 0.8
           }
           this.styleObj.transform = `translateY(${this.distance}px)`
         } else {
@@ -124,6 +125,9 @@
           this.styleObj.transform = `translateY(${this.headHeight}px)`
           this.$emit('refresh')
         } else {
+
+          this.styleObj.transition = 'transform 0.3s'
+          this.styleObj.transform = `translateY(0px)`
           return
         }
         this.$emit('input', true)
@@ -165,11 +169,12 @@
     width: 100%;
     position: relative;
     overflow: hidden;
-    height: calc(100vh - 50px);
+    height: 100%;
   }
 
   .sun-pull-refresh-track {
     position: relative;
+    height: 100%;
   }
 
   .sun-pull-refresh-head {
@@ -189,9 +194,8 @@
     transform: translateY(-100%);
 
     .loading_icon {
-      width: 20px;
-      height: 20px;
-      animation: rotate 1s infinite;
+      font-size: 16px;
+      animation: rotate 0.6s infinite linear;
       margin-right: 6px;
     }
   }
