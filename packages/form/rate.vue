@@ -17,15 +17,15 @@
       },
       icon: { // 选中的图标
         type: String,
-        default: 'success'
+        default: 'star-f'
       },
       voidIcon: { // 未选中的图标
         type: String,
-        default: 'success-o'
+        default: 'star-o'
       },
       color: { // 选中的颜色
         type: String,
-        color: '#ee0a24'
+        default: '#ee0a24'
       },
       voidColor: {
         type: String,
