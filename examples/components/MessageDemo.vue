@@ -1,102 +1,82 @@
 <template>
-  <div class="app">
-    <sun-button @click="handleClick" plain type="primary">显示/隐藏</sun-button>
-    <button class="btn">按钮</button>
+  <div class="sun-demo-message">
+    <sun-nav-bar left-arrow @left-click="$router.back()" title="Message" />
+    <!-- 基础用法 -->
+    <div class="sun-demo-block">
+      <h2 class="sun-demo-nav-title">基础用法</h2>
+      <div class="sun-demo-nav-row">
+        <sun-cell title="文字提示" is-link bg-cffect @click="$message('提示内容')" />
+      </div>
+    </div>
+
+    <!-- 消息类型 -->
+    <div class="sun-demo-block">
+      <h2 class="sun-demo-nav-title">消息类型</h2>
+      <div class="sun-demo-nav-row">
+        <sun-cell title="成功消息" is-link bg-cffect @click="$message({message:'成功消息',icon:'success'})" />
+        <sun-cell title="失败消息" is-link bg-cffect @click="$message({message:'失败消息',icon:'error'})" />
+        <sun-cell title="信息提示" is-link bg-cffect @click="$message({message:'信息提示',icon:'info'})" />
+        <sun-cell title="警告消息" is-link bg-cffect @click="$message({message:'警告消息',icon:'warning'})" />
+        <sun-cell title="加载消息" is-link bg-cffect @click="$message({message:'加载消息',icon:'loading'})" />
+      </div>
+    </div>
+
+    <!-- 是否显示边框 -->
+    <div class="sun-demo-block">
+      <h2 class="sun-demo-nav-title">是否显示边框</h2>
+      <div class="sun-demo-nav-row">
+        <sun-cell title="成功消息" is-link bg-cffect @click="$message({message:'成功消息',icon:'success',border:true})" />
+        <sun-cell title="失败消息" is-link bg-cffect @click="$message({message:'失败消息',icon:'error',border:true})" />
+      </div>
+    </div>
+
+    <!-- 显示位置 -->
+    <div class="sun-demo-block">
+      <h2 class="sun-demo-nav-title">显示位置</h2>
+      <div class="sun-demo-nav-row">
+        <sun-cell title="成功消息" is-link bg-cffect
+          @click="$message({message:'成功消息',icon:'success',border:true,position:'center'})" />
+        <sun-cell title="失败消息" is-link bg-cffect
+          @click="$message({message:'失败消息',icon:'error',border:true,position:'bottom'})" />
+      </div>
+    </div>
+
+    <!-- 自定义时长 -->
+    <div class="sun-demo-block">
+      <h2 class="sun-demo-nav-title">自定义时长</h2>
+      <div class="sun-demo-nav-row">
+        <sun-cell title="自定义时长" is-link bg-cffect
+          @click="$message({message:'自定义时长',icon:'success',border:true,duration:3000})" />
+      </div>
+    </div>
+
   </div>
 </template>
 
 <script>
-  export default {
-    data() {
-      return {
-        isShow: false,
-        index: 0
-      };
-    },
-    methods: {
-      handleClick() {
-        this.index++;
-        // this.$message.success({
-        //   message: "只是提示只是提示只是提示" + this.index,
-        //   position: "bottom",
-        //   border: true
-        // });
-        // this.$message.error({
-        //   message: "只是提示只是提示只是提示" + this.index,
-        //   position: "bottom",
-        //   border: true
-        // });
-        // this.$message.warning({
-        //   message: "只是提示只是提示只是提示" + this.index,
-        //   position: "bottom",
-        //   border: true
-        // });
-        // this.$message.info({
-        //   message: "只是提示只是提示只是提示" + this.index,
-        //   position: "bottom",
-        //   border: true
-        // });
-        // this.$message.loading({
-        //   message: "只是提示只是提示只是提示" + this.index,
-        //   position: "bottom",
-        //   border: true
-        // });
-        this.$message({
-          message: "只是提示只是提示只是提示",
-          duration: 1000,
-          icon: "loading",
-          border: true,
-          onClose: () => {
-            console.log("关闭了");
-          }
-        });
-      }
-    }
-  };
+  export default {}
 
 </script>
 
-<style lang="less" scoped>
-  * {
-    margin: 0;
-    padding: 0;
-  }
+<style lang="less">
+  .sun-demo-message {
+    margin-top: 49px;
+    min-height: 96vh;
+    background-color: #f8f8f8;
 
-  .btn {
-    position: relative;
-    display: inline-block;
-    height: 30px;
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0 12px;
-    font-size: 15px;
-    line-height: 30px;
-    text-align: center;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s;
-    -webkit-tap-highlight-color: transparent;
-    -webkit-appearance: none;
-    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
-    -webkit-box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
-    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
-    border: 0;
-    outline: none;
-
-    &::after {
-      position: absolute;
-      content: "";
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      transition: all 0.5s;
+    .sun-demo-block {
+      padding: 0 16px;
     }
-  }
 
-  .btn:active {
-    &::after {
-      border: 5px solid rgba(0, 0, 0, 0.1);
+    .sun-demo-nav-title {
+      padding: 16px 3px;
+      margin: 0;
+    }
+
+    .sun-demo-nav-row {
+      background-color: #fff;
+      border-radius: 12px;
+      margin-bottom: 10px;
     }
   }
 

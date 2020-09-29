@@ -1,15 +1,10 @@
 <template>
-  <div class="sun-demo-switch">
-
+  <div class="sun-demo-message">
   </div>
 </template>
 
 <script>
-  export default {
-    data() {
-      return {}
-    }
-  }
+  export default {}
 
 </script>
 
