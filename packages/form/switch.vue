@@ -2,7 +2,7 @@
   <div class="sun-switch" :class="{'sun-switch-on':value,'sun-switch-disabled':disabled}"
     :style="{fontSize:$calSize(size),backgroundColor:CalBgColor}" @click="handleChange">
     <div class="sun-switch-node">
-      <i class="sun-icon sun-icon-loading" :style="{color:CalBgColor}"></i>
+      <i class="sun-icon" :class="{'sun-icon-loading':loading}" :style="{color:CalBgColor}"></i>
     </div>
   </div>
 </template>

@@ -1,15 +1,34 @@
 <template>
-  <div class="app">
+  <div class="sun-demo-switch">
+    <sun-nav-bar title="Switch" left-arrow @left-click="$router.back()" />
     <!-- 基础用法 -->
-    <sun-switch v-model="checked" size="60"></sun-switch>
-    <!-- 大小 -->
-    <sun-switch size="10" v-model="checked"></sun-switch>
-    <!-- 是否禁用 -->
-    <sun-switch disabled v-model="checked"></sun-switch>
+    <div class="sun-demo-block">
+      <h2 class="sun-demo-nav-title">基础用法</h2>
+      <sun-switch v-model="checked" />
+    </div>
+    <!-- 禁用状态 -->
+    <div class="sun-demo-block">
+      <h2 class="sun-demo-nav-title">禁用状态</h2>
+      <sun-switch v-model="checked" disabled />
+    </div>
+
+    <!-- 加载状态 -->
+    <div class="sun-demo-block">
+      <h2 class="sun-demo-nav-title">加载状态</h2>
+      <sun-switch v-model="checked" loading />
+    </div>
+
+
+    <!-- 自定义大小 -->
+    <div class="sun-demo-block">
+      <h2 class="sun-demo-nav-title">自定义大小</h2>
+      <sun-switch v-model="checked" size="24px" />
+    </div>
     <!-- 自定义颜色 -->
-    <sun-switch size="10" active-color="green" inactive-color="red" v-model="checked"></sun-switch>
-    <!-- 事件 -->
-    <sun-switch @click="handleClick" @change="handleChange" v-model="checked"></sun-switch>
+    <div class="sun-demo-block">
+      <h2 class="sun-demo-nav-title">自定义颜色</h2>
+      <sun-switch v-model="checked" active-color="#07c160" inactive-color="#ee0a24" />
+    </div>
   </div>
 </template>
 
@@ -17,25 +36,27 @@
   export default {
     data() {
       return {
-        checked: true,
+        checked: false
       }
-    },
-    methods: {
-      handleChange(value) {
-        console.log(value)
-      },
-      handleClick(e) {
-        console.log('点我了', e)
-      },
-    },
+    }
   }
 
 </script>
 
 <style lang="less">
-  * {
-    margin: 0;
-    padding: 0;
+  .sun-demo-switch {
+    margin-top: 49px;
+    min-height: 96vh;
+
+    .sun-demo-nav-title {
+      padding: 16px 3px;
+      margin: 0;
+    }
+
+    .sun-demo-block {
+      padding: 0 16px;
+      margin-bottom: 10px;
+    }
   }
 
 </style>

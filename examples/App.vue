@@ -1,5 +1,5 @@
 <template>
-  <div class="app">
+  <div class="sun-demo-switch">
 
   </div>
 </template>
@@ -8,18 +8,10 @@
   export default {
     data() {
       return {}
-    },
-    methods: {
-
     }
-  };
+  }
 
 </script>
 
 <style lang="less">
-  * {
-    margin: 0;
-    padding: 0;
-  }
-
 </style>
