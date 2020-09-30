@@ -8,7 +8,7 @@
       <sun-icon badge="1sad" name="chu" size="30"></sun-icon>
     </div>
     <div>
-      <sun-icon dot dot-color="pink" name="shang" size="3rem" color="blue"></sun-icon>
+      <sun-icon dot dot-color="pink" name="arrow-up" size="3rem" color="blue"></sun-icon>
     </div>
     <div>
       <sun-icon size="30px" name="https://b.yzcdn.cn/vant/icon-demo-1126.png"></sun-icon>

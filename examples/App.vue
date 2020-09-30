@@ -1,55 +1,36 @@
 <template>
   <div class="app">
-    <sun-nav-bar left-arrow @left-click="$router.back()" title="PullRefresh" />
-    <sun-tabs>
-      <div class="sun-tab-item" @click="currentIndex=0">基础用法</div>
-      <div class="sun-tab-item" @click="currentIndex=1">成功提示</div>
-      <div class="sun-tab-item" @click="currentIndex=2">自定义提示</div>
-    </sun-tabs>
-
-    <div class="content" v-if="currentIndex===0">
-      <sun-pull-refresh v-model="isLoading" @refresh="handleRefresh">
-        <p class="refresh-time">刷新次数{{count}}</p>
-      </sun-pull-refresh>
+    <sun-cell title="我是标题">
+      <sun-stepper v-model="value"></sun-stepper>
+    </sun-cell>
+    <!-- 圆角风格 -->
+    <div class="sun-demo-block">
+      <sun-cell title="圆角风格">
+        <sun-stepper v-model="value" theme="round" button-size="22" disable-input />
+      </sun-cell>
     </div>
-    <div class="content" v-if="currentIndex===1">
-      <sun-pull-refresh v-model="isLoading" @refresh="handleRefresh" success-text="刷新成功啦">
-        <p class="refresh-time">刷新次数{{count}}</p>
-      </sun-pull-refresh>
+    <div class="sun-demo-block">
+      <sun-cell title="自定义大小">
+        <sun-stepper v-model="value" input-width="40px" button-size="32px" />
+      </sun-cell>
     </div>
-    <div class="content" v-if="currentIndex===2">
-      <sun-pull-refresh v-model="isLoading" @refresh="handleRefresh">
-        <p class="refresh-time">刷新次数{{count}}</p>
-        <template #pulling>
-          我就是下拉时候的内容
-        </template>
-        <template #loosing>
-          <img class="doge" src="https://img.yzcdn.cn/vant/doge.png" />
-        </template>
-        <template #loading>
-          <img class="doge" src="https://img.yzcdn.cn/vant/doge-fire.jpg" />
-        </template>
-      </sun-pull-refresh>
-    </div>
-
   </div>
 </template>
 
 <script>
+  import Coms from './components/ToastDemo'
   export default {
+    components: {
+      Coms
+    },
     data() {
       return {
-        isLoading: false,
-        count: 0,
-        currentIndex: 0
+        checked: false,
+        value: 2
       }
     },
-    methods: {
-      handleRefresh() {
-        console.log('刷新完啦。。。')
-        this.count++
-      },
-
+    created() {
+      console.log(this)
     }
   };
 
@@ -59,24 +40,6 @@
   * {
     margin: 0;
     padding: 0;
-  }
-
-  .app {
-    padding-top: 49px;
-  }
-
-  .content {
-    box-sizing: border-box;
-    width: 100%;
-    height: 90vh;
-    padding: 16px;
-  }
-
-  .doge {
-    width: 140px;
-    height: 72px;
-    margin-top: 8px;
-    border-radius: 4px;
   }
 
 </style>

@@ -43,14 +43,17 @@
       // 计算 gutter
       handleCalGutter() {
         let rowList = this.$refs.rows.children
-        let width = this.$refs.rows.offsetWidth / (rowList.length) - (parseInt(this.gutter) * (rowList.length - 1))
+        let gutter = parseInt(this.gutter)
+        let width = ((gutter * rowList.length) - gutter) / rowList.length
+        console.log(width)
         if (rowList.length !== 0) {
           for (let i = 0; i < rowList.length - 1; i++) {
             rowList[i].style.marginRight = this.$calSize(this.gutter)
-            rowList[i].style.width = width + 'px'
+            rowList[i].style.width = rowList[i].offsetWidth - width + 'px'
           }
           rowList[rowList.length - 1].style.marginRight = '0px'
-          rowList[rowList.length - 1].style.width = width + 'px'
+          rowList[rowList.length - 1].style.width = rowList[rowList.length - 1].offsetWidth - width +
+            'px'
         }
       }
     }
@@ -63,19 +66,11 @@
 
   .sun-row {
     display: block;
-
-    &::after {
-      content: '';
-      display: table;
-      height: 0;
-      clear: both;
-      *zoom: 1;
-    }
   }
 
   .sun-row::after {
     content: '';
-    display: none;
+    display: table;
     height: 0;
     clear: both;
   }

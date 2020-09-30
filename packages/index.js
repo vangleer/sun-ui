@@ -1,25 +1,34 @@
 // 整个包的入口
+import Vue from 'vue'
 // 定义一个 install方法，接收 Vue作为参数，如果使用 use 注册插件，则所有的组件都将被注册
-import Button from './button/Button.vue'
-import Icon from './icon/icon.vue'
-import Cell from './cell/cell.vue'
-import Row from './layout/row.vue'
-import Col from './layout/col.vue'
-import Popup from './popup/popup.vue'
-import Swipe from './swipe/swipe.vue'
-import SwipeItem from './swipe/swipe-item.vue'
-import PullRefresh from './pull-refresh/pull-refresh.vue'
-import Navbar from './nav-bar/nav-bar.vue'
-import Tabbar from './tab-bar/tab-bar.vue'
-import TabbarItem from './tab-bar/tab-bar-item.vue'
-import Tabs from './tab/tabs.vue'
-import Toast from './toast/'
-import MessageMethod from './message/index'
-import Checkbox from './form/checkbox.vue'
-import CheckboxGroup from './form/checkboxGroup.vue'
-import Switch from './form/switch.vue'
-import Rate from './form/rate.vue'
-import Stepper from './form/stepper.vue'
+import Button from "./button/index";
+import Icon from './icon/index'
+import Cell from './cell/index'
+import {
+  Row,
+  Col
+} from './layout/index'
+import Popup from './popup/index'
+import {
+  Swipe,
+  SwipeItem
+} from './swipe/index'
+import PullRefresh from './pull-refresh/index'
+import NavBar from './nav-bar/index'
+import {
+  TabBar,
+  TabBarItem
+} from './tab-bar/index'
+import Tabs from './tab/index'
+import Toast from './toast/index'
+import Message from './message/index'
+import {
+  Checkbox,
+  CheckboxGroup,
+  Switch,
+  Rate,
+  Stepper
+} from './form/index'
 import './assets/fonts/iconfont.css';
 import './assets/css/base.css'
 const components = [
@@ -32,37 +41,56 @@ const components = [
   Swipe,
   SwipeItem,
   PullRefresh,
-  Navbar,
-  Tabbar,
-  TabbarItem,
+  NavBar,
+  TabBar,
   Tabs,
   Checkbox,
   CheckboxGroup,
   Switch,
   Rate,
-  Stepper
-]
-
+  Stepper,
+  TabBarItem
+];
 // const exToast = Vue.extend(Toast)
-
 const install = function (Vue) {
+  if (install.installed) return;
   // 注册所有组件
-  components.forEach(item => {
-    Vue.component(item.name, item)
-  })
-  Vue.prototype.$toast = Toast
-  Vue.prototype.$message = MessageMethod
-  Vue.prototype.$calSize = function (size) {
-    return /px|em|rem|%/.test(size) ? size : size + 'px'
-  }
-}
+  components.map(item => Vue.component(item.name, item));
+  // Vue.prototype.$toast = Toast;
+  // Vue.prototype.$message = MessageMethod;
+};
 
 // 判断是否引入的全局文件，如果是就不用调用Vue.use()，而是直接调用install方法
-if (typeof window !== 'undefined' && window.Vue) {
-  install(window.Vue)
+if (typeof window !== "undefined" && window.Vue) {
+  install(window.Vue);
 }
-
+Vue.prototype.$calSize = function (size) {
+  return /px|em|rem|%/.test(size) ? size : size + "px";
+};
 // 导出install方法
 export default {
-  install,
-}
+  install
+};
+// 分别导出
+export {
+  Button,
+  Icon,
+  Cell,
+  Row,
+  Col,
+  Popup,
+  Swipe,
+  SwipeItem,
+  PullRefresh,
+  NavBar,
+  TabBar,
+  TabBarItem,
+  Tabs,
+  Checkbox,
+  CheckboxGroup,
+  Switch,
+  Rate,
+  Stepper,
+  Toast,
+  Message
+};

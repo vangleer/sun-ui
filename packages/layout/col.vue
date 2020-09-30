@@ -63,6 +63,7 @@
     float: left;
     box-sizing: border-box;
     min-height: 1px;
+    background-color: pink;
   }
 
 </style>

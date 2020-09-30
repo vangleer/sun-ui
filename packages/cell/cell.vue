@@ -20,7 +20,7 @@
       <span>{{ value }}</span>
       <i v-if="isLink" :class="['sun-icon', 'sun-icon-'+arrowDirection]"></i>
     </div>
-    <div v-else :style="{textAlign:value?'right':'left'}" class="sun-cell-value" :class="[valueClass]">
+    <div v-else class="sun-cell-value-slot sun-cell-value" :class="[valueClass]">
       <slot></slot>
       <i v-if="isLink" :class="['sun-icon', 'sun-icon-'+arrowDirection]"></i>
     </div>
@@ -170,6 +170,11 @@
   .sun-cell-value {
     text-align: right;
     width: 50%;
+  }
+
+  .sun-cell-value-slot {
+    display: flex;
+    justify-content: flex-end;
   }
 
   .sun-cell-border::after {

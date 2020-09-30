@@ -47,5 +47,5 @@ methods.forEach(type => {
     })
   }
 })
-
+Message.install = (Vue) => Vue.prototype.$message = Message;
 export default Message

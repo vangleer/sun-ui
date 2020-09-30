@@ -226,8 +226,8 @@
       color: #c8c9cc;
       font-size: 22px;
       cursor: pointer;
-      top: 16px;
-      right: 16px;
+      top: 10px;
+      right: 10px;
       -webkit-tap-highlight-color: transparent;
     }
 

@@ -45,4 +45,6 @@ methods.forEach(type => {
   }
 })
 
+Toast.install = (Vue) => Vue.prototype.$toast = Toast;
+
 export default Toast

@@ -1,6 +1,3 @@
-/*components/button/index.js*/
-import Button from './Button.vue'
-const install = (Vue) => Vue.component(Button.name, Button);
-export default {
-  install
-}
+import Button from "./Button.vue";
+Button.install = Vue => Vue.component(Button.name, Button);
+export default Button;

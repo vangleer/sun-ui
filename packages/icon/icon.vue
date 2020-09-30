@@ -70,8 +70,8 @@
     position: absolute;
     width: 8px;
     height: 8px;
-    top: -4px;
-    right: -4px;
+    top: 0px;
+    right: 0px;
     border-radius: 50%;
     z-index: 1;
   }

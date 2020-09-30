@@ -123,7 +123,6 @@
           this.status = 1
           this.styleObj.transition = 'transform 0.3s'
           this.styleObj.transform = `translateY(${this.headHeight}px)`
-          this.$emit('refresh')
         } else {
 
           this.styleObj.transition = 'transform 0.3s'
@@ -143,6 +142,7 @@
             this.styleObj.transform = `translateY(0px)`
             this.flag = true
           }
+          this.$emit('refresh')
         }, 2000)
       },
     }

@@ -1,12 +1,16 @@
 <template>
   <div class="sun-stepper" :class="{'sun-stepper-round':!!theme}">
     <button v-if="showMinus" class="sun-stepper-minus" :class="{'sun-stepper-minus-disabled':disabledMin}"
-      @click="handleMinusClick" :style="buttonStyle">-</button>
+      @click="handleMinusClick" :style="buttonStyle">
+      <i class="sun-icon sun-icon-minus"></i>
+    </button>
     <input type="text" class="sun-stepper-input" v-model.number="model"
       :class="{'sun-stepper-input-disabled':disabledText}" :disabled="disabledText"
       :style="{width:$calSize(inputWidth)}" @focus="$emit('focus')" @blur="$emit('blur')">
     <button v-if="showPlus" class="sun-stepper-plus" :class="{'sun-stepper-plus-disabled':disabledMax}"
-      @click="handlePlusClick" :style="buttonStyle">+</button>
+      @click="handlePlusClick" :style="buttonStyle">
+      <i class="sun-icon sun-icon-plus"></i>
+    </button>
   </div>
 </template>
 
@@ -136,6 +140,7 @@
     .sun-stepper-input {
       border: 0;
       background-color: transparent;
+      height: 100%;
     }
   }
 
@@ -178,7 +183,6 @@
   .sun-stepper-input {
     box-sizing: border-box;
     width: 32px;
-    height: 28px;
     margin: 0 2px;
     padding: 0;
     color: #323233;
@@ -191,6 +195,7 @@
     border-width: 1px 0;
     border-radius: 0;
     -webkit-appearance: none;
+    height: 100%;
   }
 
   .sun-stepper-minus-disabled,

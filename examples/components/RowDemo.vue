@@ -14,12 +14,7 @@
 </template>
 
 <script>
-  import Button from './components/ButtonDemo'
-  export default {
-    components: {
-      Button
-    }
-  };
+  export default {};
 
 </script>
 
@@ -27,10 +22,6 @@
   * {
     margin: 0;
     padding: 0;
-  }
-
-  .app {
-    padding: 50px;
   }
 
 </style>
