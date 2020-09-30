@@ -85,10 +85,12 @@
     mounted() {
       // 初始索引
       this.index = parseInt(this.initialSwipe)
+      let childList = this.$refs.swipeTrack.children
       // 获取宽度或高度
       this.w = this.vertical ? this.$refs.swipe.offsetHeight : this.$refs.swipe.offsetWidth
+      console.log(childList[0].offsetHeight)
       // 得到轮播图的个数
-      this.count = this.$refs.swipeTrack.children.length
+      this.count = childList.length
       // 获取track的总宽度或高度
       this.totalW = this.w * this.count
       // 判断是translateY还是translateX
@@ -96,13 +98,13 @@
       console.log('yes')
       // 拷贝第一张和最后一张
 
-      let firstNode = this.$refs.swipeTrack.children[0].cloneNode(true)
-      let lastNode = this.$refs.swipeTrack.children[this.count - 1].cloneNode(true)
+      let firstNode = childList[0].cloneNode(true)
+      let lastNode = childList[this.count - 1].cloneNode(true)
 
       this.$refs.swipeTrack.appendChild(firstNode)
-      this.$refs.swipeTrack.insertBefore(lastNode, this.$refs.swipeTrack.children[0])
+      this.$refs.swipeTrack.insertBefore(lastNode, childList[0])
 
-      this.totalCount = this.$refs.swipeTrack.children.length
+      this.totalCount = childList.length
       // 是否autoPlay
       this.handleAutoplay()
       // 设置到当前索引的位置
@@ -209,7 +211,6 @@
     position: relative;
     width: 100%;
     height: 200px;
-    background-color: red;
     overflow: hidden;
   }
 

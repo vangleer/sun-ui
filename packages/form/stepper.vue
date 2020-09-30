@@ -6,7 +6,7 @@
     </button>
     <input type="text" class="sun-stepper-input" v-model.number="model"
       :class="{'sun-stepper-input-disabled':disabledText}" :disabled="disabledText"
-      :style="{width:$calSize(inputWidth)}" @focus="$emit('focus')" @blur="$emit('blur')">
+      :style="{width:$calSize(inputWidth)}" @focus="(e)=>$emit('focus',e)" @blur="(e)=>$emit('blur',e)">
     <button v-if="showPlus" class="sun-stepper-plus" :class="{'sun-stepper-plus-disabled':disabledMax}"
       @click="handlePlusClick" :style="buttonStyle">
       <i class="sun-icon sun-icon-plus"></i>
