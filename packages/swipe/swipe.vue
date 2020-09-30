@@ -61,6 +61,14 @@
       },
       squareIndicators: {
         type: Boolean
+      },
+      touchable: {
+        type: Boolean,
+        default: true
+      },
+      stopPropagation: {
+        type: Boolean,
+        default: true
       }
     },
     data() {
@@ -110,10 +118,15 @@
       // 设置到当前索引的位置
       this.setTranslate()
       console.log(this.totalCount)
+
+      document.addEventListener('click', (e) => {
+        e.stopPropagation()
+      })
     },
     methods: {
       // 自动播放方法
       handleAutoplay() {
+
         if (!!this.autoplay) {
           this.timer = setInterval(() => {
             this.index++
@@ -123,7 +136,10 @@
       },
       // 滑动开始事件
       handleTouchStart(e) {
+        console.log(e)
+        if (!this.touchable) return
         e = e || window.event
+
         this.start = this.vertical ? e.touches[0].clientY : e.touches[0].clientX
         this.distance = 0
         // 清除过度
@@ -132,17 +148,20 @@
         if (this.timer) {
           window.clearInterval(this.timer)
         }
+        if (this.stopPropagation) e.stopPropagation()
       },
       // 滑动事件
       handleTouchmove(e) {
+        if (!this.touchable) return
         e = e || window.event
         this.distance = this.vertical ? e.changedTouches[0].clientY - this.start : e.changedTouches[0].clientX - this
           .start
         this.styleObj.transform = `${this.translate}(${-(this.index+1)*this.w+this.distance}px)`
+        if (this.stopPropagation) e.stopPropagation()
       },
       // 滑动结束事件
       handleTouchend(e) {
-
+        if (!this.touchable) return
         e = e || window.event
         if (Math.abs(this.distance) >= (this.w / 3)) {
           if (this.distance > 0) { // 右滑
@@ -153,6 +172,7 @@
         }
         this.move()
         this.handleAutoplay()
+        if (this.stopPropagation) e.stopPropagation()
       },
       // 添加过度
       addTransition() {

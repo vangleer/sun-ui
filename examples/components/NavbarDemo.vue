@@ -1,40 +1,82 @@
 <template>
-  <div class="app">
-    <sun-nav-bar title="我的" left-arrow border right-text="搜索" @left-click="handleLeftClick">
-      <template #left>
-        左左
-      </template>
-      <template #title>
-        标标
-      </template>
-      <template #right>
-        优优
-      </template>
-    </sun-nav-bar>
-    <div class="content"></div>
+  <div class="sun-demo-nav-bar">
+    <sun-nav-bar title="NavBar" left-arrow />
+    <!-- 基础用法 -->
+    <div class="sun-demo-block">
+      <h2 class="sun-demo-nav-title">基础用法</h2>
+      <div class="sun-demo-nav-box">
+        <sun-nav-bar title="标题" left-text="返回" right-text="按钮" left-arrow @click-left="onClickLeft"
+          @click-right="onClickRight" />
+      </div>
+    </div>
+
+    <!-- 使用插槽 -->
+    <div class="sun-demo-block">
+      <h2 class="sun-demo-nav-title">使用插槽</h2>
+      <div class="sun-demo-nav-box">
+        <sun-nav-bar title="标题" left-text="返回" left-arrow>
+          <template #right>
+            <sun-icon name="plus" size="18" />
+          </template>
+        </sun-nav-bar>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+  import {
+    Toast
+  } from '../packages';
   export default {
+    components: {},
+    data() {
+      return {}
+    },
     methods: {
-      handleLeftClick() {
-        console.log('点击了左边')
-      }
-    }
+      onClickLeft() {
+        Toast('返回');
+      },
+      onClickRight() {
+        Toast('按钮');
+      },
+    },
+    created() {}
   }
 
 </script>
 
 <style lang="less">
   * {
-    margin: 0;
     padding: 0;
+    margin: 0;
   }
 
-  .content {
-    width: 100%;
-    height: 2000px;
+  .sun-demo-nav-bar {
+    padding-top: 49px;
+    width: 100vw;
+    height: 100vh;
+    background-color: #f8f8f8;
+
+    .sun-demo-nav-title {
+      padding: 16px 16px 12px;
+    }
+
+    .sun-demo-nav-box {
+      position: relative;
+      height: 80px;
+
+      .sun-nav-bar {
+        position: absolute;
+        background-color: #fff;
+        color: #1989fa;
+
+        .sun-nav-bar-left,
+        .sun-nav-bar-right {
+          font-size: 14px;
+        }
+      }
+    }
   }
 
 </style>

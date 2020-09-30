@@ -87,6 +87,7 @@
   .sun-nav-bar-center {
     flex: 1;
     text-align: center;
+    color: #000;
 
     span {
       font-size: 16px;

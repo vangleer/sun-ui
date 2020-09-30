@@ -4,7 +4,7 @@
     <!-- 基础用法 -->
     <div class="sun-demo-block">
       <h2 class="sun-demo-nav-title">基础用法</h2>
-      <sun-swipe class="my-swipe" :autoplay="3000">
+      <sun-swipe class="my-swipe" :autoplay="3000" :touchable="false">
         <sun-swipe-item>1</sun-swipe-item>
         <sun-swipe-item>2</sun-swipe-item>
         <sun-swipe-item>3</sun-swipe-item>
@@ -24,7 +24,7 @@
 
     <div class="sun-demo-block">
       <h2 class="sun-demo-nav-title">纵向滚动</h2>
-      <sun-swipe class="my-swipe" vertical>
+      <sun-swipe class="my-swipe" vertical :stop-propagation="false">
         <sun-swipe-item>1</sun-swipe-item>
         <sun-swipe-item>2</sun-swipe-item>
         <sun-swipe-item>3</sun-swipe-item>
