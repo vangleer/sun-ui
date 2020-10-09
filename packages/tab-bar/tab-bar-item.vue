@@ -2,7 +2,7 @@
   <div class="sun-tabbar-item" @click="handleItemClick">
     <div class="sun-info-icon">
       <template v-if="$slots.icon">
-        <slot></slot>
+        <slot name="icon"></slot>
       </template>
       <i v-if="!isUrl&&!$slots.icon" :class="[iconPrefix,iconPrefix+'-'+icon]"></i>
       <img v-else :src="icon" class="sun-icon" alt="">
