@@ -63,6 +63,7 @@
 <style lang="less" scoped>
   .sun-icon {
     position: relative;
+    cursor: pointer;
   }
 
   // 小点

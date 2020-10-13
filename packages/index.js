@@ -56,8 +56,8 @@ const install = function (Vue) {
   if (install.installed) return;
   // 注册所有组件
   components.map(item => Vue.component(item.name, item));
-  // Vue.prototype.$toast = Toast;
-  // Vue.prototype.$message = MessageMethod;
+  Vue.prototype.$toast = Toast;
+  Vue.prototype.$message = MessageMethod;
 };
 
 // 判断是否引入的全局文件，如果是就不用调用Vue.use()，而是直接调用install方法
