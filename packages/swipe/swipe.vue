@@ -2,7 +2,7 @@
   <div ref="swipe" class="sun-swipe" :style="{width:width&&parseInt(width)+'px',height:height&&parseInt(height)+'px'}">
     <div ref="swipeTrack" @transitionend="handleTransitionend"
       :class="[vertical?'sun-swipe-track-vertical':'sun-swipe-track']" :style="styleObj" @touchstart="handleTouchStart"
-      @touchmove="handleTouchmove" @touchend="handleTouchend">
+      @touchmove="handleTouchmove" @touchend="handleTouchend" @mousedown="handleTouchStart" @mousemove="handleTouchmove" @mouseup="handleTouchend">
       <slot></slot>
     </div>
 
@@ -83,6 +83,7 @@
         totalCount: 0,
         count: 0,
         translate: 'translate',
+        isStart:false,
         styleObj: {
           transform: 'translateX(0px)',
           transition: 'none'
@@ -122,6 +123,15 @@
       document.addEventListener('click', (e) => {
         e.stopPropagation()
       })
+
+      setTimeout(()=>{
+        document.addEventListener('mouseup',()=>{
+          this.handleTouchend()
+        }) 
+        document.addEventListener('touchend',()=>{
+          this.handleTouchend()
+        }) 
+      },1000)
     },
     methods: {
       // 自动播放方法
@@ -138,9 +148,14 @@
       handleTouchStart(e) {
         console.log(e)
         if (!this.touchable) return
+        this.isStart = true
         e = e || window.event
-
-        this.start = this.vertical ? e.touches[0].clientY : e.touches[0].clientX
+        
+        if(e.touches) {
+          this.start = this.vertical ? e.touches[0].clientY : e.touches[0].clientX
+        }else {
+          this.start = this.vertical ? e.clientY : e.clientX
+        }
         this.distance = 0
         // 清除过度
         this.removeTransition()
@@ -154,9 +169,17 @@
       handleTouchmove(e) {
         if (!this.touchable) return
         e = e || window.event
-        this.distance = this.vertical ? e.changedTouches[0].clientY - this.start : e.changedTouches[0].clientX - this
+        if(e.changedTouches) {
+          this.distance = this.vertical ? e.changedTouches[0].clientY - this.start : e.changedTouches[0].clientX - this
           .start
-        this.styleObj.transform = `${this.translate}(${-(this.index+1)*this.w+this.distance}px)`
+        }else {
+          this.distance = this.vertical ? e.clientY - this.start : e.clientX - this.start
+        }
+        
+        if(this.isStart) {
+          this.styleObj.transform = `${this.translate}(${-(this.index+1)*this.w+this.distance}px)`
+        }
+        
         if (this.stopPropagation) e.stopPropagation()
       },
       // 滑动结束事件
@@ -172,6 +195,7 @@
         }
         this.move()
         this.handleAutoplay()
+        this.isStart = false
         if (this.stopPropagation) e.stopPropagation()
       },
       // 添加过度
