@@ -31,6 +31,7 @@ import {
   Input
 } from './form/index'
 import Dialog from './dialog/index'
+import Pagination from './pagination/index'
 import './assets/fonts/iconfont.css';
 import './assets/css/base.css'
 const components = [
@@ -54,7 +55,8 @@ const components = [
   TabBarItem,
   TabItem,
   Dialog,
-  Input
+  Input,
+  Pagination
 ];
 // const exToast = Vue.extend(Toast)
 const install = function (Vue) {
@@ -100,5 +102,6 @@ export {
   Message,
   TabItem,
   Dialog,
-  Input
+  Input,
+  Pagination
 };

@@ -25,11 +25,13 @@ import {
   TabBarItem,
   TabItem,
   Dialog,
-  Input
+  Input,
+  Pagination
 } from "../packages";
 Vue.config.productionTip = false;
 // Vue.use(Sun);
 Vue.use(Button);
+Vue.use(Pagination);
 Vue.use(Input);
 Vue.use(Dialog);
 Vue.use(TabItem);
