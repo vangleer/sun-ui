@@ -27,7 +27,8 @@ import {
   CheckboxGroup,
   Switch,
   Rate,
-  Stepper
+  Stepper,
+  Input
 } from './form/index'
 import Dialog from './dialog/index'
 import './assets/fonts/iconfont.css';
@@ -52,7 +53,8 @@ const components = [
   Stepper,
   TabBarItem,
   TabItem,
-  Dialog
+  Dialog,
+  Input
 ];
 // const exToast = Vue.extend(Toast)
 const install = function (Vue) {
@@ -97,5 +99,6 @@ export {
   Toast,
   Message,
   TabItem,
-  Dialog
+  Dialog,
+  Input
 };

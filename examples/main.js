@@ -24,11 +24,13 @@ import {
   TabBar,
   TabBarItem,
   TabItem,
-  Dialog
+  Dialog,
+  Input
 } from "../packages";
 Vue.config.productionTip = false;
 // Vue.use(Sun);
 Vue.use(Button);
+Vue.use(Input);
 Vue.use(Dialog);
 Vue.use(TabItem);
 Vue.use(Checkbox);
