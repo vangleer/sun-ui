@@ -19,7 +19,7 @@ import {
   TabBar,
   TabBarItem
 } from './tab-bar/index'
-import Tabs from './tab/index'
+import {Tabs,TabItem} from './tab/index'
 import Toast from './toast/index'
 import Message from './message/index'
 import {
@@ -29,6 +29,7 @@ import {
   Rate,
   Stepper
 } from './form/index'
+import Dialog from './dialog/index'
 import './assets/fonts/iconfont.css';
 import './assets/css/base.css'
 const components = [
@@ -49,7 +50,9 @@ const components = [
   Switch,
   Rate,
   Stepper,
-  TabBarItem
+  TabBarItem,
+  TabItem,
+  Dialog
 ];
 // const exToast = Vue.extend(Toast)
 const install = function (Vue) {
@@ -92,5 +95,7 @@ export {
   Rate,
   Stepper,
   Toast,
-  Message
+  Message,
+  TabItem,
+  Dialog
 };

@@ -1,18 +1,18 @@
 <template>
   <div class="app">
-    <BurronDemo/>
-
-     <sun-button type="primary"
-                      :isExtra="true">关闭效果</sun-button>
-          <sun-button type="info"
-                      effectWidth="10px">调整效果大小</sun-button>
+    <sun-button type="primary" @click="show=!show">显示</sun-button>
+     <sun-dialog v-model="show" title="标题" message="这是一条提示!"></sun-dialog>
   </div>
 </template>
 
 <script>
-import BurronDemo from './components/ButtonDemo'
   export default {
-    components:{BurronDemo}
+    data() {
+     return { show:false}
+    },
+    methods:{
+     
+    }
   }
 
 </script>

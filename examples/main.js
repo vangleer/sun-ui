@@ -1,5 +1,6 @@
 import Vue from "vue";
 import App from "./App.vue";
+import router from './router/index'
 // import Sun from "../packages";
 import {
   Button,
@@ -21,11 +22,15 @@ import {
   SwipeItem,
   Switch,
   TabBar,
-  TabBarItem
+  TabBarItem,
+  TabItem,
+  Dialog
 } from "../packages";
 Vue.config.productionTip = false;
 // Vue.use(Sun);
 Vue.use(Button);
+Vue.use(Dialog);
+Vue.use(TabItem);
 Vue.use(Checkbox);
 Vue.use(Cell);
 Vue.use(Row);
@@ -47,5 +52,6 @@ Vue.use(TabBar);
 Vue.use(TabBarItem);
 
 new Vue({
+  router,
   render: h => h(App)
 }).$mount("#app");

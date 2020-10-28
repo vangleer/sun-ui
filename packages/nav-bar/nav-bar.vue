@@ -59,10 +59,10 @@
     },
     methods: {
       handleLeftClick() {
-        this.$emit('left-click')
+        this.$emit('click-left')
       },
       handleRightClick() {
-        this.$emit('right-click')
+        this.$emit('click-right')
       }
     }
   }
