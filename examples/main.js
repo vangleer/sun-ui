@@ -26,11 +26,15 @@ import {
   TabItem,
   Dialog,
   Input,
-  Pagination
+  Pagination,
+  Collapse,
+  CollapseItem
 } from "../packages";
 Vue.config.productionTip = false;
 // Vue.use(Sun);
 Vue.use(Button);
+Vue.use(Collapse);
+Vue.use(CollapseItem);
 Vue.use(Pagination);
 Vue.use(Input);
 Vue.use(Dialog);

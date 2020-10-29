@@ -1,6 +1,5 @@
 <template>
   <div class="app">
-  
   </div>
 </template>
 
@@ -8,19 +7,15 @@
 export default {
   data() {
     return {
-     
     }
   },
   methods:{
-  
   }
 }
 </script>
 
 <style lang="less">
 .app {
-  width: 100vw;
-  height: 100vh;
   padding: 50px 20px;
   background-color: #eee;
 }
@@ -29,4 +24,5 @@ export default {
   padding: 0;
   box-sizing: border-box;
 }
+
 </style>

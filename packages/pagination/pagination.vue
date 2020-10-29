@@ -117,7 +117,6 @@ export default {
       return { number, text, active };
     },
     bem(val) {
-
       return !!val ? 'sun-pagination-'+val:'sun-pagination'
     }
   }

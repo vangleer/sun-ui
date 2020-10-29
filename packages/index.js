@@ -32,6 +32,7 @@ import {
 } from './form/index'
 import Dialog from './dialog/index'
 import Pagination from './pagination/index'
+import {Collapse,CollapseItem} from './collapse/index'
 import './assets/fonts/iconfont.css';
 import './assets/css/base.css'
 const components = [
@@ -56,7 +57,9 @@ const components = [
   TabItem,
   Dialog,
   Input,
-  Pagination
+  Pagination,
+  Collapse,
+  CollapseItem
 ];
 // const exToast = Vue.extend(Toast)
 const install = function (Vue) {
@@ -103,5 +106,7 @@ export {
   TabItem,
   Dialog,
   Input,
-  Pagination
+  Pagination,
+  Collapse,
+  CollapseItem
 };
