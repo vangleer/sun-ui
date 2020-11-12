@@ -2,6 +2,16 @@
   "name": "vue-sun-ui",
   "version": "0.1.4",
   "main": "dist/vue-sun-ui.umd.min.js",
+  "keywords": [
+    "vue-sun-ui",
+    "vue",
+    "vue ui",
+    "sun",
+    "vue-components",
+    "component",
+    "components",
+    "mobile ui"
+  ],
   "author": {
     "name": "黄万通"
   },
