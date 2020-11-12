@@ -2,14 +2,9 @@
   <div class="sun-tabs" ref="sunTabs">
     <div class="sun-tabs-nav-wrap" ref="tabWrap">
         <slot></slot>
+    </div>
       <!-- 线条 -->
       <div class="sun-tabs-line" :style="{ width: lineWidth, ...lineStyle }"></div>
-    </div>
-    <div class="sun-tabs-content">
-      <slot name="content">
-        
-      </slot>
-    </div>
   </div>
 </template>
 
@@ -49,7 +44,7 @@
       }
     },
     mounted() {
-      // this.handleInit()
+      this.handleInit()
     },
     methods: {
       handleAddEvent() {
@@ -111,5 +106,15 @@
     bottom: 0;
     border-radius: 3px;
   }
-
+ .sun-tab-item {
+    flex: 1;
+    display: flex;
+    line-height: 20px;
+    justify-content: center;
+    align-items: center;
+    padding: 0 4px;
+}
+.sun-tab-pane {
+  color: red;
+}
 </style>
