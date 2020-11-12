@@ -43,6 +43,7 @@ export default {
   },
   computed: {
     isExpended() {
+      console.log('获取啦啦啦....')
       let parentArr = this.parentCollapse.value 
       let names = parentArr.push?[...parentArr]:[parentArr]
       const flag = names.indexOf(this.name)!==-1

@@ -16,6 +16,8 @@ export default {
 
 <style lang="less">
 .app {
+  width: 100vw;
+  height: 100vh;
   padding: 50px 20px;
   background-color: #eee;
 }

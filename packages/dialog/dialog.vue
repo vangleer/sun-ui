@@ -11,10 +11,10 @@
             <div v-if="!$slots.default" class="sun-dialog-message" :class="{'van-dialog-message-has-title':!!title,['sun-dialog-message-align-'+messageAlign]:messageAlign}">{{message}}</div>
           </div>
        
-          <div class="sun-dialog-footer">
+          <div class="sun-dialog-footer" :class="[showCancelButton||showConfirmButton?'footer-border':'']">
             <button 
               class="sun-dialog-cansel"
-              :class="{'sun-dialog-cansel-round':theme==='round-button'}" 
+              :class="{'sun-dialog-cansel-round':theme==='round-button','border-right':true}" 
               :style="{color:cancelButtonColor}" 
               v-if="showCancelButton"
               @click="handleCanselClick"
@@ -173,7 +173,12 @@ export default {
 .sun-dialog-footer {
     display: flex;
     overflow: hidden;
+    
 }
+.footer-border {
+  border-top: 1px solid #eee;
+}
+
 .sun-dialog-confirm,
 .sun-dialog-cansel {
     position: relative;
@@ -204,6 +209,9 @@ export default {
   background-color: #ee0a24;
   margin: 10px 20px;
   color: #fff;
+}
+.border-right {
+  border-right: 1px solid #eee;
 }
 
 .sun-dialog-confirm {
