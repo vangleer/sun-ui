@@ -1,7 +1,7 @@
 <h1 align="center">vue-sun-ui</h1>
 <p align="center">
   <a href="https://java0088.github.io/sun-ui-client/dist/#/">
-    <img src="https://vangleer.github.io/sun-ui-client/dist/img/logo-green.8bcdc5df.png" width="175">
+    <img src="https://vangleer.github.io/sun-ui-client/img/logo-green.8bcdc5df.png" width="175">
   </a>
 </p>
 ## Install
